@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <!-- <base href="https://b-hw2-38225.firebaseapp.com/"> -->
+  <title>Content Tags</title>
+  <!-- This page utilizes the following html tags: 
+    a, em, strong, small, s, cite, q, dfn, abbr, ruby, rb, rt, rtc, rp, data, time,
+    code, var, samp, kbd, sup, sub, i, u, b, mark, bdi, bdo, span, br, wbr,
+    del, ins,
+    picture, source, img, iframe, embed, object, video, source, track, audio, map, area
+  -->
+</head>
+<body>
+  <h2>Content Tags</h2>
+  <hr>
+  <section>
+    <h3>Text-level semantics</h3>
+    <a href="/issues.html">Link to the issues page</a>
+    <p><em>Emphasizing</em> text and marking something really <strong>important</strong></p>
+    <p><small>Something less significant</small></p>
+    <p><s>This statement is wrong</s>, hmmm...</p>
+    <p><cite>I've never said that</cite> --- Confucius</p>
+    <p><q>Quote on quote..</q></p>
+    <p><dfn>Web Developers</dfn> are programmers who specialize the development of Web applications</p>
+    <p><abbr title="HyperText Transfer Protocol">HTTP</abbr> is an application protocol for distributed systems.</p>
+    <p><ruby><rb>上<rb>手<rt>じよう<rt>ず<rtc><rp>(<rt>jou<rt>zu<rp>)</ruby></p>
+    <p><data value="A13333333">Mysterious Student with a magic pid</data></p>
+    <p><time datetime="2018-07-16 00:00">Prime Day</time> deals suck</p>
+    <p><code>helloWorld()</code></p>
+    <p><var>counter</var> is a variable</p>
+    <p><samp>./run: No such file or directory</samp></p>
+    <p>Delete all files:<kbd> yes|no</kbd></p>
+    <p>2<sup>3</sup> = 8</p>
+    <p>i<sub>0</sub> = i<sub>1</sub> = i<sub>2</sub> = i<sub>3</sub></p>
+    <p><i>Italic</i>, <u>underline</u>, <mark>highlight/mark</mark> and <b>bold</b> are useful for text formating.</p>
+    <p>No one can understand what <bdi>إيان</bdi> says:</p>
+    <p><bdo dir="rtl">?eva can i stab bats in a cave?</bdo></p>
+    <p><span style="color:red">Spanning this text section</span> so I can format it a little bit for convenience</p>
+    <p>Line break incoming:</p>
+    <br>
+    <p>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr>RESIZE<wbr>ME<wbr></p>
+  </section>
+  <hr>
+  <section>
+    <h3>Edit Tags</h3>
+    <p>Number of pages left to do: <del>3</del> <ins>2</ins></p>
+  </section>
+  <hr>
+  <section>
+    <h3>Embedded content Tags</h3>
+    <picture>
+      <source media="(min-width: 600px)" srcset="images/kappa.png">
+      <source media="(min-width: 450px)" srcset="images/kappa-medium.png">
+      <img src="images/kappa-small.png" alt="kappa" style="width:auto">
+    </picture>
+    <p><iframe width="350" height="200" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen>
+    </iframe></p>
+    <embed width="150" height="150" src="images/loading1.swf">
+    <object width="150" height="150" data="images/loading2.swf">
+      <param name="autoplay" value="false">
+    </object>
+    <p><video width="400" height="400" controls>
+      <source src="images/connor.mp4" type="video/mp4">
+      <track src="images/connor.vtt" kind="subtitles" srclang="en" label="English" default>
+    </video></p>
+    <p><audio controls>
+      <source src="images/connor.mp3" type="audio/mpeg">
+    </audio></p>
+    <img src="https://static-cdn.jtvnw.net/emoticons/v1/9/2.0" alt="heart" usemap="#heartmap">
+    <map name="heartmap">
+      <area shape="rect" coords="24,10,34,20" href="" alt="heart of the heart">
+    </map>
+
+  </section>
+</body>
+</html>

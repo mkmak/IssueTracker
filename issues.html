@@ -3,50 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <!-- <base href="https://b-hw2-38225.firebaseapp.com/"> -->
-  <title>Page Title</title>
+  <link rel="icon" href="images/favicon.png">
+  <title>Issues</title>
   <style>
     table, th, td {
       border: 1px solid black;
     }
   </style>
-  <!-- This page utilizes the following html tags:  
-    table, caption, colgroup, col, tr, th, td, thead, tbody, tfoot
-  -->
 </head>
 <body>
   <h2>Issues:</h2>
   <hr>
   <button><a href="addissue.html">Add Issue</a></button>
   <table>
-    <caption>List of issues</caption>
     <colgroup>
-      <col width="80">
-      <col span="2" width="140">
+      <col width="50">
+      <col span="2" width="150">
       <col width="400">
     </colgroup>
-    <thead>
-      <tr>
-        <th>Issue Id</th>
-        <th>Issue Name</th>
-        <th>Issue Type</th>
-        <th>Issue Description</th>
-      </tr>
-    </thead>
-    <tfoot>
-      <tr>
-        <td colspan="3">Total number of issues</td>
-        <td>3</td>
-      </tr>
-    </tfoot>
-    
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>a</td>
-        <td>a</td>
-        <td>a</td>
-      </tr>
-    </tbody>
+    <tr>
+      <th>Issue Id</th>
+      <th>Issue Name</th>
+      <th>Issue Type</th>
+      <th>Issue Description</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><a href="document.html">Document Structure</a></td>
+      <td>Structure and key tags</td>
+      <td>This includes document element, document metadata, sections, and grouping content</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><a href="table.html">Tables</a></td>
+      <td>Table tags</td>
+      <td>This includes tabular data</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><a href="content.html">Content</a></td>
+      <td>Tags related to content</td>
+      <td>Includes text-level semantics, edit, embedded content, and links.</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><a href="interaction.html">Interaction</a></td>
+      <td>Tags for interactivity</td>
+      <td>Includes:</td>
+    </tr>
   </table>
 </body>
 </html>
