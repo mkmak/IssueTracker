@@ -8,14 +8,17 @@
     table, caption, colgroup, col, tr, th, td, thead, tbody, tfoot, 
     datalist, option, input, p, dialog, p br
   -->
+  <!--
+    This page has a validator warning:
+      The dialog element is not supported in all browsers. Please be sure to test, and consider using a polyfill.
+  -->
 </head>
 <body>
   <table>
     <caption>List of customers</caption>
     <colgroup>
-      <col width="50">
-      <col span="2" width="130">
-      <col width="400">
+      <col>
+      <col span="2">
     </colgroup>
     <thead>
       <tr>
@@ -24,13 +27,7 @@
         <th>Customer Type</th>
       </tr>
     </thead>
-    <tfoot>
-      <tr>
-        <td>3</td>
-        <td colspan="2">Total number of customers</td>
-      </tr>
-    </tfoot>
-    
+
     <tbody>
       <tr>
         <td>1</td>
@@ -48,6 +45,14 @@
         <td>Random dude</td>
       </tr>
     </tbody>
+
+    <tfoot>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Total number of customers</td>
+      </tr>
+    </tfoot>
+    
   </table>
   <dialog open>
   <p>New Customer <br>
