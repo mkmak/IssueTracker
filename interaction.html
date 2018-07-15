@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <!-- <base href="https://b-hw2-38225.firebaseapp.com/"> -->
@@ -10,55 +11,68 @@
     progress, scrpit, template, input, output, form, button, noscript, script
   -->
 </head>
+
 <body>
-    <canvas id="Text"></canvas>
-    <script>
-        var canvasText = document.getElementById("Text");
-        if (canvasText.getContext) {
-            var ctxText = canvasText.getContext("2d");
-            var text = 'Interaction';
-            ctxText.font = '40pt Cursive';
-            ctxText.fillStyle = '#fc0';
-            ctxText.strokeStyle = '#f90';
-            ctxText.fillText(text, 3, 62);
-            ctxText.strokeText(text, 1, 60);
-        }
-    </script>
-    <noscript><h2>Interaction</h2></noscript>
-    <hr>
-    <details>
-        <summary><label for=fn>Computer Usage:</label></summary>
-        <p>media: <progress max="100" value="20"></progress> 20%</p>
-        <p>games: <progress max="100" value="30"></progress> 30%</p>
-        <p>other: <progress max="100" value="40"></progress> 40%</p>
-        <p>remaining: <progress max="100" value="10"></progress> 10%</p>
-    </details>
-    <br><br><br><br>
-    <button onclick="showContent()">Calculator</button>
-    <template id="template">
-      <form oninput="c.value = a.valueAsNumber + b.valueAsNumber">
-        <input type="number" name="a"> +
-        <input type="number" name="b"> =
-        <output name=c for="a b"></output>
-      </form>
-    </template>
-    <script>
-        function showContent() {
-            var temp = document.getElementById('template').content.cloneNode(true);
-            document.body.appendChild(temp);
-        }
-    </script>
-    <noscript>
-        <p>Javascript is not supported.</p>>
-    </noscript>
+  <canvas id="Text"></canvas>
+  <script>
+    var canvasText = document.getElementById("Text");
+    if (canvasText.getContext) {
+      var ctxText = canvasText.getContext("2d");
+      var text = 'Interaction';
+      ctxText.font = '40pt Cursive';
+      ctxText.fillStyle = '#fc0';
+      ctxText.strokeStyle = '#f90';
+      ctxText.fillText(text, 3, 62);
+      ctxText.strokeText(text, 1, 60);
+    }
+  </script>
+  <noscript>
+    <h2>Interaction</h2>
+  </noscript>
+  <hr>
+  <details>
+    <summary>
+      <label>Computer Usage:</label>
+    </summary>
+    <p>media:
+      <progress max="100" value="20"></progress> 20%</p>
+    <p>games:
+      <progress max="100" value="30"></progress> 30%</p>
+    <p>other:
+      <progress max="100" value="40"></progress> 40%</p>
+    <p>remaining:
+      <progress max="100" value="10"></progress> 10%</p>
+  </details>
+  <br>
+  <br>
+  <br>
+  <br>
+  <button onclick="showContent()">Calculator</button>
+  <template id="template">
+    <form oninput="c.value = a.valueAsNumber + b.valueAsNumber">
+      <input type="number" name="a"> +
+      <input type="number" name="b"> =
+      <output name=c for="a b"></output>
+    </form>
+  </template>
+  <script>
+    function showContent() {
+      var temp = document.getElementById('template').content.cloneNode(true);
+      document.body.appendChild(temp);
+    }
+  </script>
+  <noscript>
+    <p>Javascript is not supported.</p>>
+  </noscript>
 
-    <canvas id="myCanvas"></canvas>
+  <canvas id="myCanvas"></canvas>
 
-<script>
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-ctx.fillStyle = "#FF0000";
-ctx.fillRec(0, 0, 80, 80);
-</script> 
-    
+  <script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRec(0, 0, 80, 80);
+  </script>
+
 </body>
+</html>
