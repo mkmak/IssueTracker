@@ -4,9 +4,48 @@
   <meta charset="utf-8" />
   <!-- <base href="https://b-hw2-38225.firebaseapp.com/"> -->
   <title>Page Title</title>
-  <!-- This page utilizes the following html tags:  -->
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+  <!-- This page utilizes the following html tags:  
+    table, caption, colgroup, col, tr, th, td, 
+  -->
 </head>
 <body>
-  
+  <h2>Issues:</h2>
+  <hr>
+  <button><a href="addissue.html">Add Issue</a></button>
+  <table>
+    <caption>List of issues</caption>
+    <colgroup>
+      <col width="80">
+      <col span="2" width="140">
+      <col width="400">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Issue Id</th>
+        <th>Issue Name</th>
+        <th>Issue Type</th>
+        <th>Issue Description</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td colspan="3">Total number of issues</td>
+        <td>3</td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>a</td>
+        <td>a</td>
+        <td>a</td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>
