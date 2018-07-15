@@ -5,6 +5,10 @@
   <!-- <base href="https://b-hw2-38225.firebaseapp.com/"> -->
   <link rel="icon" href="images/favicon.png">
   <title>Issue Tracker</title>
+    <!-- This page utilizes the following html tags: 
+    html, head, meta, link, title, body, main, article, header, h1, h2, h3, nav, ul
+    li, a, hr, section, h2, form, fieldset, legend, input, br, p, button, form, 
+  -->
 </head>
 
 <body>
@@ -17,26 +21,24 @@
 
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/issues.html">Issues</a></li>
+          <li>Home</li>
+          <li><a href="issues.html">Issues</a></li>
         </ul>
         </nav>
     </header>
     <hr>
-
     <section>
-      <h5>Already have an account? Log in below.</h5>
+        <h5>Already have an account? Log in below.</h5>
       <form>
-        <label>Username:</label><br>
-        <input type="text" placeholder="Enter username"><br>
-
-        <label>Password:</label><br>
-        <input type="password" placeholder="Enter password"><br>
-
-        <a href="">Forgot password?</a><br>
-        <p></p>
-        <button type="submit">Sign in</button>
-      </form>
+        <fieldset>
+          <legend>Log In:</legend>
+          Username: <input type="text"><br>
+          Passworld: <input type="password"><br>
+          <a href="">Forgot password?</a><br>
+          <p></p>
+          <button type="submit">Sign in</button>
+        </fieldset>
+      </form> 
       <p>New to Issue Tracker? <a href="">Create a new account</a></p>
     </section>
   </article>

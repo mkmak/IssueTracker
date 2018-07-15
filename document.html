@@ -10,6 +10,7 @@
     h1, h2, h3, h4, h5, h6, header, footer, p, address, hr, ul, li, a, em, strong,
     br, form, label, input, button, textarea,
     q, cite, div, pre, blockquote, main, ol, dl, dd, dt, figure, figcaption
+    select, opton, optgroup
   -->
 </head>
 <body>
@@ -23,7 +24,7 @@
         <nav>
           <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/issues.html">Issues</a></li>
+            <li><a href="issues.html">Issues</a></li>
           </ul>
           </nav>
       </header>
@@ -88,6 +89,16 @@
       <aside>
         <p>Submit your feedback here:</p>
         <textarea rows="2" cols="30" placeholder="Your feedback"></textarea>
+        <select name=feedback>
+          <optgroup label="Suggestion">
+             <option>Suggestion1</option>
+             <option>Suggestion2</option>
+           </optgroup>
+           <optgroup label="Question">
+             <option>Question1</option>
+             <option>Question2</option>
+           </optgroup>
+         </select>
       </aside>
       <hr>
   

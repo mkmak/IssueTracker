@@ -5,7 +5,8 @@
   <!-- <base href="https://b-hw2-38225.firebaseapp.com/"> -->
   <title>Table</title>
   <!-- This page utilizes the following html tags:  
-    table, caption, colgroup, col, tr, th, td, thead, tbody, tfoot
+    table, caption, colgroup, col, tr, th, td, thead, tbody, tfoot, 
+    datalist, option, input, p
   -->
 </head>
 <body>
@@ -48,5 +49,15 @@
       </tr>
     </tbody>
   </table>
+  <p>New Customer
+    Name: <input type="text">
+    Type: <input type="text" list="customertype">
+    <datalist id="customertype">
+        <option value="sponsor"></option>
+        <option value="type1"></option>
+        <option value="type2"></option>
+        <option value="type3"></option>
+    </datalist>
+  </p>
 </body>
 </html>
