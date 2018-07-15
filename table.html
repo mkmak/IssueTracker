@@ -6,7 +6,7 @@
   <title>Table</title>
   <!-- This page utilizes the following html tags:  
     table, caption, colgroup, col, tr, th, td, thead, tbody, tfoot, 
-    datalist, option, input, p
+    datalist, option, input, p, dialog, p br
   -->
 </head>
 <body>
@@ -49,8 +49,9 @@
       </tr>
     </tbody>
   </table>
-  <p>New Customer
-    Name: <input type="text">
+  <dialog open>
+  <p>New Customer <br>
+    Name: <input type="text"> <br>
     Type: <input type="text" list="customertype">
     <datalist id="customertype">
         <option value="sponsor"></option>
@@ -59,5 +60,6 @@
         <option value="type3"></option>
     </datalist>
   </p>
+</dialog>
 </body>
 </html>
