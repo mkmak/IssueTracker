@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///C:/Users/GGGGGGGGG/Desktop/CSE134B-master/table.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <!-- <base href="https://b-hw2-38225.firebaseapp.com/"> -->
+  <title>Table</title>
+  <!-- This page utilizes the following html tags:  
+    table, caption, colgroup, col, tr, th, td, thead, tbody, tfoot, 
+    datalist, option, input, p, dialog, p br
+  -->
+</head>
+<body>
+   <header> 
+       <h1>Issue Name: Table</h1>
+
+<h3>Issue Type: Table Tags </h3><h3>Issue Description</h3>
+<p>	This includes tabular data.</p>
+   </header>
+    <table>
+    <caption>List of customers</caption>
+    <colgroup>
+      <col width="50">
+      <col span="2" width="130">
+      <col width="400">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Customer Id</th>
+        <th>Customer Name</th>
+        <th>Customer Type</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td>3</td>
+        <td colspan="2">Total number of customers</td>
+      </tr>
+    </tfoot>
+    
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Michael McBugFace</td>
+        <td>Friend</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Shitoshi Crapamoto</td>
+        <td>Sponsor</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Scam Diego Union Tribune</td>
+        <td>Random dude</td>
+      </tr>
+    </tbody>
+  </table>
+  <dialog open="">
+  <p>New Customer <br>
+    Name: <input type="text"> <br>
+    Type: <input type="text" list="customertype">
+    <datalist id="customertype">
+        <option value="sponsor"></option>
+        <option value="type1"></option>
+        <option value="type2"></option>
+        <option value="type3"></option>
+    </datalist>
+  </p>
+</dialog>
+
+</body></html>
