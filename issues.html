@@ -7,20 +7,17 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="icon" href="images/favicon.png">
   <title>Issues</title>
-  <style>
-    table, th, td {
-      border: 1px solid black;
-    }
-  </style>
 </head>
 <body>
   <h2>Issues:</h2>
   <hr>
-  <button onclick="window.location.href='addissue.html'">Add Issue</button>
+  <button type="button" onclick="window.location.href='addissue.html'">Add Issue</button>
   <table>
     <colgroup>
       <col>
       <col span="2">
+      <col>
+      <col>
       <col>
     </colgroup>
     <tr>
@@ -28,30 +25,40 @@
       <th>Issue Name</th>
       <th>Issue Type</th>
       <th>Issue Description</th>
+      <th>Status</th>
+      <th>Action</th>
     </tr>
     <tr>
       <td>1</td>
-      <td><a href="document.html">Document Structure</a></td>
-      <td>Structure and key tags</td>
-      <td>This includes document element, document metadata, sections, and grouping content</td>
+      <td><a href="">IE6 not supported</a></td>
+      <td>Browser-specific</td>
+      <td>User reports that site does not work in IE6.</td>
+      <td>Open</td>
+      <td>Action</td>
     </tr>
     <tr>
       <td>2</td>
-      <td><a href="table.html">Tables</a></td>
-      <td>Table tags</td>
-      <td>This includes tabular data</td>
+      <td><a href="">Reset Password Link</a></td>
+      <td>HTML Content</td>
+      <td>The reset password button under the login form leads to a 404 page. It appears that the link is broken.</td>
+      <td>Open</td>
+      <td>Action</td>
     </tr>
     <tr>
       <td>3</td>
-      <td><a href="content.html">Content</a></td>
-      <td>Tags related to content</td>
-      <td>Includes text-level semantics, edit, embedded content, and links.</td>
+      <td><a href="">Logo Missing</a></td>
+      <td>HTML Content</td>
+      <td>The company logo at the end of the main page is missing.</td>
+      <td>Open</td>
+      <td>Action</td>
     </tr>
     <tr>
       <td>4</td>
-      <td><a href="interaction.html">Interaction</a></td>
-      <td>Tags for interactivity</td>
-      <td>This includes interative elements.</td>
+      <td><a href="">Search Timeout</a></td>
+      <td>Functionality</td>
+      <td>In-site searching is broken.</td>
+      <td>Open</td>
+      <td>Action</td>
     </tr>
   </table>
 </body>
