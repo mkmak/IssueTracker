@@ -5,12 +5,16 @@
     font-size: 12pt;
 }
 
+#header {
+    font-size: 20pt;
+}
+
 body {
     padding: 10%;
     line-height: 1.2;
     word-spacing: 1px;
 }
 
-#edit1 {
+img, #addbtn {
     visibility: hidden;
 }
