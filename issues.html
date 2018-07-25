@@ -8,11 +8,22 @@
   <link rel="stylesheet" media="print" href="print.css" type="text/css">
   <link rel="icon" href="images/favicon.png">
   <title>Issues</title>
+  <script>
+    function toggle(btn) {
+      if (btn.innerHTML == "Open") btn.innerHTML = "Closed";
+      else btn.innerHTML = "Open";
+    }
+    function remove(link) {
+      link.parentElement.parentElement.remove();
+    }
+  </script>
 </head>
 <body>
   <h2 id="header">Issues:</h2>
   <hr>
-  <button id="addbtn" type="button" onclick="window.location.href='addissue.html'">Add Issue</button>
+  <noscript>
+    <p>Javascript must be enabled for some functionalities to work.</p>
+  </noscript>
   <table id="issues-table">
     <colgroup>
       <col class="issueid">
@@ -20,7 +31,7 @@
       <col class="issuetype">
       <col class="issuedesc">
       <col class="issuestat">
-      <col class="issueact">
+      <col class="issueact" width="95px">
     </colgroup>
     <tr>
       <th class="issueid">Issue Id</th>
@@ -35,9 +46,9 @@
       <td class="issuename"><a href="issue1.html">IE6 not supported</a></td>
       <td class="issuetype">Browser-specific</td>
       <td class="issuedesc">User reports that site does not work in IE6.</td>
-      <td class="issuestat"><a class="button-block" href="resolved_1.html">Open</a></td>
-      <td class="issueact"><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a>
-                        <a class="button-block" href="delete_1.html">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></a>
+      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
+      <td class="issueact"><button><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></button>
                     </td>
     </tr>
     <tr>
@@ -45,9 +56,9 @@
       <td class="issuename"><a href="issue2.html">Reset Password Link</a></td>
       <td class="issuetype">HTML Content</td>
       <td class="issuedesc">The reset password button under the login form leads to a 404 page. It appears that the link is broken.</td>
-      <td class="issuestat"><a class="button-block" href="resolved_2.html">Open</a></td>
-      <td class="issueact"><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a>
-                        <a class="button-block" href="delete_2.html">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></a>
+      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
+      <td class="issueact"><button><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></button>
                     </td>
     </tr>
     <tr>
@@ -55,9 +66,9 @@
       <td class="issuename"><a href="issue3.html">Logo Missing</a></td>
       <td class="issuetype">HTML Content</td>
       <td class="issuedesc">The company logo at the center of the main page is missing.</td>
-      <td class="issuestat"><a class="button-block" href="resolved_3.html">Open</a></td>
-      <td class="issueact"><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a>
-                        <a class="button-block" href="delete_3.html">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></a>
+      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
+      <td class="issueact"><button><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></button>
                     </td>
     </tr>
     <tr>
@@ -65,11 +76,13 @@
       <td class="issuename"><a href="issue4.html">Search Timeout</a></td>
       <td class="issuetype">Functionality</td>
       <td class="issuedesc">In-site searching is broken.</td>
-      <td class="issuestat"><a class="button-block" href="resolved_4.html">Open</a></td>
-      <td class="issueact"><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a>
-                        <a class="button-block" href="delete_4.html">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></a>
+      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
+      <td class="issueact"><button><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></button>
                     </td>
     </tr>
   </table>
+  <br>
+  <button id="addbtn" type="button" onclick="window.location.href='addissue.html'"><a href="addissue.html">Add Issue</a></button><br>
 </body>
 </html>
