@@ -16,5 +16,9 @@ body {
 }
 
 img, #addbtn {
-    visibility: hidden;
+    display: none;
+}
+
+.issueact {
+    display: none;
 }
