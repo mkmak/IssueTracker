@@ -15,9 +15,6 @@ button {
     cursor: pointer;
 }
 
-button>a {
-    text-decoration: none;
-}
 
 button:hover {
     background: #7ad5ff;
@@ -26,6 +23,10 @@ button:hover {
 table {
     border-collapse: collapse;
     max-width: 1000px;
+}
+
+.issueact {
+    width: 95px;
 }
 
 th, td {

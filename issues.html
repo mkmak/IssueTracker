@@ -31,7 +31,7 @@
       <col class="issuetype">
       <col class="issuedesc">
       <col class="issuestat">
-      <col class="issueact" width="95px">
+      <col class="issueact">
     </colgroup>
     <tr>
       <th class="issueid">Issue Id</th>
@@ -47,8 +47,8 @@
       <td class="issuetype">Browser-specific</td>
       <td class="issuedesc">User reports that site does not work in IE6.</td>
       <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
-      <td class="issueact"><button><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a></button>
-                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></button>
+      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
                     </td>
     </tr>
     <tr>
@@ -57,8 +57,8 @@
       <td class="issuetype">HTML Content</td>
       <td class="issuedesc">The reset password button under the login form leads to a 404 page. It appears that the link is broken.</td>
       <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
-      <td class="issueact"><button><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a></button>
-                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></button>
+      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
                     </td>
     </tr>
     <tr>
@@ -67,8 +67,8 @@
       <td class="issuetype">HTML Content</td>
       <td class="issuedesc">The company logo at the center of the main page is missing.</td>
       <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
-      <td class="issueact"><button><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a></button>
-                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></button>
+      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
                     </td>
     </tr>
     <tr>
@@ -77,12 +77,15 @@
       <td class="issuetype">Functionality</td>
       <td class="issuedesc">In-site searching is broken.</td>
       <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
-      <td class="issueact"><button><a class="button-block" href="editissue.html">Edit <img class="icon" width="15px" height="15px" src="images/edit_icon.png" alt="edit"></a></button>
-                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15px" height="15px" src="images/delete_icon.svg" alt="delete"></button>
+      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
                     </td>
     </tr>
   </table>
   <br>
-  <button id="addbtn" type="button" onclick="window.location.href='addissue.html'"><a href="addissue.html">Add Issue</a></button><br>
+  <button id="addbtn" type="button" onclick="window.location.href='addissue.html'">Add Issue</button><br>
+  <noscript>
+    <br><a href="addissue.html">Link to Add Issue</a>
+  </noscript>
 </body>
 </html>
