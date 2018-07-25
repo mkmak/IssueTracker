@@ -1,3 +1,43 @@
-table, th, td {
-    border: 1px solid black;
+table {
+    border-collapse: collapse;
+    width:100%;
+    padding: 2%;
+}
+
+th, td {
+    border: 1px solid #bbb;
+    padding: 2px;
+}
+
+tr:nth-child(even) {
+    background: #ddf4ff;
+}
+
+tr:hover {
+    background: #c6edff;
+}
+
+th {
+    background: #7ad5ff;
+}
+
+@media screen and (max-width: 700px) {
+    .issueid {
+        display: none;
+    }
+    .issuedesc {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .issueid {
+        display: none;
+    }
+    .issuedesc {
+        display: none;
+    }
+    .issuetype {
+        display: none;
+    }
 }
