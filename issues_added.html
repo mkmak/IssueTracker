@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <!-- <base href="https://b-hw2-38225.firebaseapp.com/"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" media="print" href="print.css" type="text/css">
+  <link rel="icon" href="images/favicon.png">
+  <title>Issues</title>
+  <script>
+    function toggle(btn) {
+      if (btn.innerHTML == "Open") btn.innerHTML = "Closed";
+      else btn.innerHTML = "Open";
+    }
+    function remove(link) {
+      link.parentElement.parentElement.remove();
+    }
+  </script>
+</head>
+<body>
+  <h2 id="header">Issues:</h2>
+  <hr>
+  <noscript>
+    <p>Javascript must be enabled for some functionalities to work.</p>
+  </noscript>
+  <table id="issues-table">
+    <colgroup>
+      <col class="issueid">
+      <col class="issuename">
+      <col class="issuetype">
+      <col class="issuedesc">
+      <col class="issuestat">
+      <col class="issueact">
+    </colgroup>
+    <tr>
+      <th class="issueid">Issue Id</th>
+      <th class="issuename">Issue Name</th>
+      <th class="issuetype">Issue Type</th>
+      <th class="issuedesc">Issue Description</th>
+      <th class="issuestat">Status</th>
+      <th class="issueact">Action</th>
+    </tr>
+    <tr>
+      <td class="issueid">1</td>
+      <td class="issuename"><a href="issue1.html">IE6 not supported</a></td>
+      <td class="issuetype">Browser-specific</td>
+      <td class="issuedesc">User reports that site does not work in IE6.</td>
+      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
+      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+                    </td>
+    </tr>
+    <tr>
+      <td class="issueid">2</td>
+      <td class="issuename"><a href="issue2.html">Reset Password Link</a></td>
+      <td class="issuetype">HTML Content</td>
+      <td class="issuedesc">The reset password button under the login form leads to a 404 page. It appears that the link is broken.</td>
+      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
+      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+                    </td>
+    </tr>
+    <tr>
+      <td class="issueid">3</td>
+      <td class="issuename"><a href="issue3.html">Logo Missing</a></td>
+      <td class="issuetype">HTML Content</td>
+      <td class="issuedesc">The company logo at the center of the main page is missing.</td>
+      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
+      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+                    </td>
+    </tr>
+    <tr>
+      <td class="issueid">4</td>
+      <td class="issuename"><a href="issue4.html">Search Timeout</a></td>
+      <td class="issuetype">Functionality</td>
+      <td class="issuedesc">In-site searching is broken.</td>
+      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
+      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+                    </td>
+    </tr>
+    <tr>
+        <td class="issueid">5</td>
+        <td class="issuename"><a href="issue5.html">Search Timeout</a></td>
+        <td class="issuetype">HTML Content</td>
+        <td class="issuedesc">login.html yields three errors in the w3 validator</td>
+        <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
+        <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                          <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+                      </td>
+      </tr>
+  </table>
+  <br>
+  <button id="addbtn" type="button" onclick="window.location.href='addissue.html'">Add Issue</button><br>
+  <noscript>
+    <br><a href="addissue.html">Link to Add Issue</a>
+  </noscript>
+</body>
+</html>

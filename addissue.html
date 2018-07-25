@@ -22,30 +22,32 @@
         <label>Issue Title</label>
 
         <br>
-        <input type="text" placeholder="Enter Issue Title" value="Signup Page Validation">
+        <input name="title" type="text" placeholder="Enter Issue Title" value="Signup Page Validation">
 
         <br>
         <br>
         <label>Issue Type</label>
         <br>
-        <input type="text" placeholder="Enter Issue Type" value="HTML Content">
+        <input name="type" type="text" placeholder="Enter Issue Type" value="HTML Content">
 
         <br>
         <br>
         <label>Issue Description</label>
         <br>
-        <input type="text" placeholder="Enter Description" value="login.html yields three errors in the w3 validator">
+        <textarea name="desc" rows="8" cols="50">login.html yields three errors in the w3 validator</textarea>
         <br>
         <br>
 
         <label>Issue Attachment: </label>
-        <button>Choose File</button>
+        <input type="file">
 
         <br>
         <br>
-        <button>Submit Issue</button>
-        <button>Reset</button>
+        <!-- <input type="submit">
+        <input type="reset"> -->
       </form>
+      <button type="button" onclick="location.href='issues_added.html'">Submit</button>
+      <button type="button">Reset</button>
     </article>
   </main>
   <br>
