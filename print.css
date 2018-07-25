@@ -9,13 +9,17 @@
     font-size: 20pt;
 }
 
+p::first-line {
+    text-indent: 50px; 
+}
+
 body {
     padding: 10%;
     line-height: 1.2;
     word-spacing: 1px;
 }
 
-img, #addbtn {
+.icon, #addbtn {
     display: none;
 }
 
