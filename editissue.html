@@ -12,45 +12,59 @@
   -->
 </head>
 <body>
-  <main>
-    <article>
-      <header>
-        <h1>Edit Issue</h1>
-      </header>
-      <form>
+  <header>
+    <h1>Edit Issue</h1>
+  </header>
+  <form>
+
+    <div class="row">
+      <div class="col1">
         <label>Issue Title</label>
+      </div>
+      <div class="col2">
+        <input name="title" type="text" placeholder="Enter Issue Title">
+      </div>
+    </div>
 
-        <br>
-        <input type="text" placeholder="Enter Issue Title">
+    <br>
 
-        <br>
-        <br>
-        <label>Issue Type</label>
-        <br>
-        <input type="text" placeholder="Enter Issue Type">
+    <div class="row">
+        <div class="col1">
+          <label>Issue Type</label>
+        </div>
+        <div class="col2">
+          <input name="type" type="text" placeholder="Enter Issue Type">
+        </div>
+      </div>
 
-        <br>
-        <br>
+    <br>
+
+    <div class="row">
+      <div class="col1">
         <label>Issue Description</label>
-        <br>
-        <input type="text" placeholder="Enter Description">
-        <br>
-        <br>
+      </div>
+      <div class="col2">
+        <textarea name="desc" rows="8" cols="50" placeholder="Enter description"></textarea>
+      </div>
+    </div>
+    <br>
 
+    <div class="row">
+      <div class="col1">
         <label>Issue Attachment: </label>
-        <button>Choose File</button>
-
-        <br>
-        <br>
-        <button>Confirm Edit</button>
-        <button>Reset</button>
-      </form>
-    </article>
-  </main>
+      </div>
+      <div class="col2">
+        <input type="file">
+      </div>
+    </div>
+    
+    <br>
+    
+    <!-- <input type="submit">
+    <input type="reset"> -->
+  </form>
+  <button type="button" onclick="location.href='issues_added.html'">Submit</button>
+  <button type="button">Reset</button>
   <br>
-
-  <small>This page was edited on
-    <time>2018-07-24</time>
-  </small>
 </body>
 </html>
