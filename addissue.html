@@ -19,30 +19,50 @@
         <p>Add Issue is a place to add new issues to the Issues Page</p>
       </header>
       <form>
-        <label>Issue Title</label>
+
+        <div class="row">
+          <div class="col1">
+            <label>Issue Title</label>
+          </div>
+          <div class="col2">
+            <input name="title" type="text" placeholder="Enter Issue Title" value="Signup Page Validation">
+          </div>
+        </div>
 
         <br>
-        <input name="title" type="text" placeholder="Enter Issue Title" value="Signup Page Validation">
+
+        <div class="row">
+            <div class="col1">
+              <label>Issue Type</label>
+            </div>
+            <div class="col2">
+              <input name="type" type="text" placeholder="Enter Issue Type" value="HTML Content">
+            </div>
+          </div>
 
         <br>
-        <br>
-        <label>Issue Type</label>
-        <br>
-        <input name="type" type="text" placeholder="Enter Issue Type" value="HTML Content">
 
-        <br>
-        <br>
-        <label>Issue Description</label>
-        <br>
-        <textarea name="desc" rows="8" cols="50">login.html yields three errors in the w3 validator</textarea>
-        <br>
+        <div class="row">
+          <div class="col1">
+            <label>Issue Description</label>
+          </div>
+          <div class="col2">
+            <textarea name="desc" rows="8" cols="50">login.html yields three errors in the w3 validator</textarea>
+          </div>
+        </div>
         <br>
 
-        <label>Issue Attachment: </label>
-        <input type="file">
-
+        <div class="row">
+          <div class="col1">
+            <label>Issue Attachment: </label>
+          </div>
+          <div class="col2">
+            <input type="file">
+          </div>
+        </div>
+        
         <br>
-        <br>
+        
         <!-- <input type="submit">
         <input type="reset"> -->
       </form>

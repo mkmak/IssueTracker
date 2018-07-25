@@ -15,9 +15,24 @@ button {
     cursor: pointer;
 }
 
-
 button:hover {
     background: #7ad5ff;
+}
+
+.row {
+    padding: 7px;
+}
+
+.col1 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col2 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
 }
 
 table {
@@ -67,6 +82,10 @@ button-block {
     }
     .issuedesc {
         display: none;
+    }
+    .col1, .col2, textarea {
+        width: 100%;
+        margin-top: 3px;
     }
 }
 

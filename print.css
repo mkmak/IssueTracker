@@ -26,3 +26,8 @@ body {
 .issueact {
     display: none;
 }
+
+button {
+    font-size: 100%;
+    border: 0px;
+}
