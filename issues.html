@@ -20,73 +20,86 @@
   </script>
 </head>
 <body>
-  <h2 id="header">Issues:</h2>
+  <header>
+    <div class="container">
+      <h2 id="header">Issues List:</h2>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li>Issues</li>
+          <li><a href="#">Log Out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <hr>
-  <noscript>
-    <p>Javascript must be enabled for some functionalities to work.</p>
-  </noscript>
-  <table id="issues-table">
-    <colgroup>
-      <col class="issueid">
-      <col class="issuename">
-      <col class="issuetype">
-      <col class="issuedesc">
-      <col class="issuestat">
-      <col class="issueact">
-    </colgroup>
-    <tr>
-      <th class="issueid">Issue Id</th>
-      <th class="issuename">Issue Name</th>
-      <th class="issuetype">Issue Type</th>
-      <th class="issuedesc">Issue Description</th>
-      <th class="issuestat">Status</th>
-      <th class="issueact">Action</th>
-    </tr>
-    <tr>
-      <td class="issueid">1</td>
-      <td class="issuename"><a href="issue1.html">IE6 not supported</a></td>
-      <td class="issuetype">Browser-specific</td>
-      <td class="issuedesc">User reports that site does not work in IE6.</td>
-      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
-      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
-                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
-                    </td>
-    </tr>
-    <tr>
-      <td class="issueid">2</td>
-      <td class="issuename"><a href="issue2.html">Reset Password Link</a></td>
-      <td class="issuetype">HTML Content</td>
-      <td class="issuedesc">The reset password button under the login form leads to a 404 page. It appears that the link is broken.</td>
-      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
-      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
-                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
-                    </td>
-    </tr>
-    <tr>
-      <td class="issueid">3</td>
-      <td class="issuename"><a href="issue3.html">Logo Missing</a></td>
-      <td class="issuetype">HTML Content</td>
-      <td class="issuedesc">The company logo at the center of the main page is missing.</td>
-      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
-      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
-                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
-                    </td>
-    </tr>
-    <tr>
-      <td class="issueid">4</td>
-      <td class="issuename"><a href="issue4.html">Search Timeout</a></td>
-      <td class="issuetype">Functionality</td>
-      <td class="issuedesc">In-site searching is broken.</td>
-      <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
-      <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
-                        <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
-                    </td>
-    </tr>
-  </table>
-  <br>
-  <button id="addbtn" type="button" onclick="window.location.href='addissue.html'">Add Issue</button><br>
-  <noscript>
-    <br><a href="addissue.html">Link to Add Issue</a>
-  </noscript>
+  <div class="container">
+    <noscript>
+      <p>Javascript must be enabled for some functionalities to work.</p>
+    </noscript>
+    <table id="issues-table">
+      <colgroup>
+        <col class="issueid">
+        <col class="issuename">
+        <col class="issuetype">
+        <col class="issuedesc">
+        <col class="issuestat">
+        <col class="issueact">
+      </colgroup>
+      <tr>
+        <th class="issueid">Issue Id</th>
+        <th class="issuename">Issue Name</th>
+        <th class="issuetype">Issue Type</th>
+        <th class="issuedesc">Issue Description</th>
+        <th class="issuestat">Status</th>
+        <th class="issueact">Action</th>
+      </tr>
+      <tr>
+        <td class="issueid">1</td>
+        <td class="issuename"><a href="issue1.html">IE6 not supported</a></td>
+        <td class="issuetype">Browser-specific</td>
+        <td class="issuedesc">User reports that site does not work in IE6.</td>
+        <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
+        <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                          <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+                      </td>
+      </tr>
+      <tr>
+        <td class="issueid">2</td>
+        <td class="issuename"><a href="issue2.html">Reset Password Link</a></td>
+        <td class="issuetype">HTML Content</td>
+        <td class="issuedesc">The reset password button under the login form leads to a 404 page. It appears that the link is broken.</td>
+        <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
+        <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                          <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+                      </td>
+      </tr>
+      <tr>
+        <td class="issueid">3</td>
+        <td class="issuename"><a href="issue3.html">Logo Missing</a></td>
+        <td class="issuetype">HTML Content</td>
+        <td class="issuedesc">The company logo at the center of the main page is missing.</td>
+        <td class="issuestat"><button class="button-block" onclick="toggle(this)">Closed</button></td>
+        <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                          <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+                      </td>
+      </tr>
+      <tr>
+        <td class="issueid">4</td>
+        <td class="issuename"><a href="issue4.html">Search Timeout</a></td>
+        <td class="issuetype">Functionality</td>
+        <td class="issuedesc">In-site searching is broken.</td>
+        <td class="issuestat"><button class="button-block" onclick="toggle(this)">Open</button></td>
+        <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                          <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+                      </td>
+      </tr>
+    </table>
+    <br>
+    <button id="addbtn" type="button" onclick="window.location.href='addissue.html'">Add Issue</button><br>
+    <noscript>
+      <br><a href="addissue.html">Link to Add Issue</a>
+    </noscript>
+</div>
 </body>
 </html>

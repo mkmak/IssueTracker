@@ -1,10 +1,11 @@
-body {
-    font-family: 'Muli', sans-serif;
-    margin: 30px 20px;
+*{
+    margin: 0;
+    padding: 0;
 }
 
-p {
-    max-width: 800px;
+body {
+    font-family: 'Muli', sans-serif;
+    line-height: 1.5;
 }
 
 button {
@@ -14,6 +15,74 @@ button {
     padding: 4px 8px;
     background: #c6edff;
     cursor: pointer;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: black;
+    color: white;
+    min-height: 70px;
+}
+
+header #header{
+    float:left;
+    padding: 15px;
+}
+
+header p{
+    float: right;
+}
+
+nav ul{
+    float: right;
+    padding: 20px 15px 15px 15px;
+}
+
+nav li{
+    display: inline;
+    padding: 5px 15px;
+    background: black;
+    color:white;
+}
+
+nav a:hover{
+    background: red;
+}
+
+.issue_img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 15px;
+}
+
+hr{
+    margin: 10px 0;
+}
+
+legend {
+    padding: 0 10px;
+}
+
+input {
+    line-height: 1.5;
+}
+
+nav a{
+    color: white;
+}
+
+nav a:visited{
+    color: white;
+}
+
+button[type="submit"]{
+    margin: 5px;
 }
 
 button:hover {
@@ -38,7 +107,6 @@ button:hover {
 
 table {
     border-collapse: collapse;
-    max-width: 1000px;
 }
 
 .issueact {

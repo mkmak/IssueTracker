@@ -14,58 +14,65 @@
 </head>
 <body>
   <header>
-    <h1>Edit Issue</h1>
+    <div class="container">
+      <h2 id="header">Edit Issue:</h2>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="issues.html">Issues</a></li>
+          <li><a href="#">Log Out</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <form>
 
-    <div class="row">
-      <div class="col1">
-        <label>Issue Title</label>
-      </div>
-      <div class="col2">
-        <input name="title" type="text" placeholder="Enter Issue Title">
-      </div>
-    </div>
+  <hr>
 
-    <br>
-
-    <div class="row">
-        <div class="col1">
-          <label>Issue Type</label>
+  <section>
+    <div class="container">
+      <form>
+        <div class="row">
+          <div class="col1">
+            <label>Issue Title</label>
+          </div>
+          <div class="col2">
+            <input name="title" type="text" placeholder="Enter Issue Title">
+          </div>
         </div>
-        <div class="col2">
-          <input name="type" type="text" placeholder="Enter Issue Type">
+        <br>
+        <div class="row">
+            <div class="col1">
+              <label>Issue Type</label>
+            </div>
+            <div class="col2">
+              <input name="type" type="text" placeholder="Enter Issue Type">
+            </div>
+          </div>
+        <br>
+        <div class="row">
+          <div class="col1">
+            <label>Issue Description</label>
+          </div>
+          <div class="col2">
+            <textarea name="desc" rows="8" cols="50" placeholder="Enter description"></textarea>
+          </div>
         </div>
-      </div>
-
-    <br>
-
-    <div class="row">
-      <div class="col1">
-        <label>Issue Description</label>
-      </div>
-      <div class="col2">
-        <textarea name="desc" rows="8" cols="50" placeholder="Enter description"></textarea>
-      </div>
+        <br>
+        <div class="row">
+          <div class="col1">
+            <label>Issue Attachment: </label>
+          </div>
+          <div class="col2">
+            <input type="file">
+          </div>
+        </div>
+        <br>
+        <!-- <input type="submit">
+        <input type="reset"> -->
+      </form>
+      <button type="button" onclick="location.href='issues_added.html'">Submit</button>
+      <button type="button">Reset</button>
     </div>
-    <br>
-
-    <div class="row">
-      <div class="col1">
-        <label>Issue Attachment: </label>
-      </div>
-      <div class="col2">
-        <input type="file">
-      </div>
-    </div>
-    
-    <br>
-    
-    <!-- <input type="submit">
-    <input type="reset"> -->
-  </form>
-  <button type="button" onclick="location.href='issues_added.html'">Submit</button>
-  <button type="button">Reset</button>
-  <br>
+  </section>
 </body>
 </html>

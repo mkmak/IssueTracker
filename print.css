@@ -5,8 +5,16 @@
     font-size: 12pt;
 }
 
-#header {
+header #header{
+    padding-top: 50px;
     font-size: 20pt;
+    color: black;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 
 p::first-line {
@@ -14,16 +22,15 @@ p::first-line {
 }
 
 body {
-    padding: 10%;
     line-height: 1.2;
     word-spacing: 1px;
 }
 
-.icon, #addbtn {
-    display: none;
-}
-
-.issueact {
+.icon, 
+#addbtn,
+.issueact,
+header ul,
+hr {
     display: none;
 }
 
