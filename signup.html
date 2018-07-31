@@ -8,9 +8,13 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="icon" href="images/favicon.png">
   <title>Issue Tracker</title>
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script src="initFirebase.js"></script>
+
 </head>
 
-<body>
+<body onload="init()">
   <header>
     <div class="container">
       <h1 id="header">Welcome to Issue Tracker!</h1>
@@ -27,18 +31,40 @@
 
   <section>
     <div class="container">
-      <form>
-        <fieldset>
-          <legend>Sign Up For An Account:</legend>
-          Username: <input id="email" type="text"><br>
-          Password: <input id="password" type="password"><br>
-          <p></p>
-          <button type="submit" onclick="handleSignUp()">Sign up</button>
-        </fieldset>
-      </form> 
+      <fieldset>
+        <legend>Sign Up For An Account:</legend>
+        Email: <input id="email" type="email" placeholder="Enter your email..."><br>
+        Password: <input id="password" type="password" placeholder="Enter your password"><br>
+        <p></p>
+        <button id="signupbtn">Sign up</button>
+      </fieldset>
       <p>Already have an account? <a href="login.html">Log in here</a></p>
     </div>
   </section>
+
+  <script>
+    function signup(){
+      console.log('signing up...');
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        alert(error.message);
+        console.log(error.message);
+      });
+    }
+
+    function init(){
+      console.log('initializing...');
+      firebase.auth().onAuthStateChanged(function(user) {
+        if(user){
+          location.href = "index.html"
+        }
+      });
+    }
+
+    document.getElementById('signupbtn').addEventListener('click', signup);
+  </script>
 
 </body>
 </html>

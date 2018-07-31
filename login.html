@@ -14,18 +14,7 @@
   -->
 
   <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyBpT4Da1QDwhhFQLPmTFZqofGSExaDlKhc",
-      authDomain: "b-hw2-38225.firebaseapp.com",
-      databaseURL: "https://b-hw2-38225.firebaseio.com",
-      projectId: "b-hw2-38225",
-      storageBucket: "b-hw2-38225.appspot.com",
-      messagingSenderId: "414413271526"
-    };
-    firebase.initializeApp(config);
-  </script>
+  <script src="initFirebase.js"></script>
 
 </head>
 
@@ -49,7 +38,7 @@
     <div class="container">
       <fieldset>
         <legend>Log In:</legend>
-        Email: <input id="email" type="text" placeholder="Enter your email..."><br>
+        Email: <input id="email" type="email" placeholder="Enter your email..."><br>
         Password: <input id="password" type="password" placeholder="Enter your password..."><br>
         <a href="">Forgot password?</a><br>
         <p></p>
@@ -66,6 +55,7 @@
       var password = document.getElementById('password').value;
 
       firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        alert(error.message);
         console.log(error.message);
       });
     }
