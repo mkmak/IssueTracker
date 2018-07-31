@@ -42,12 +42,16 @@
   </section>
 
   <script>
+    var db = firebase.firestore();
+    const settings = {timestampsInSnapshots: true};
+    db.settings(settings);
+
     document.getElementById('signupbtn').addEventListener('click', signup);
     
     function signup(){
-      console.log('signing up...');
       var email = document.getElementById('email').value;
       var password = document.getElementById('password').value;
+      console.log('signing up...');
 
       firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
         alert(error.message);
@@ -63,7 +67,12 @@
       console.log('initializing...');
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
-          location.href = "index.html"
+          var email = document.getElementById('email').value;
+          db.collection('users').doc(user.uid).set({
+            email: email
+          });
+
+          //location.href = "index.html"
         }
       });
     }
