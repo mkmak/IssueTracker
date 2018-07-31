@@ -24,6 +24,7 @@
           <li id="home_login"><a href="login.html">Log In</a></li>
           <li id="home_signup"><a href="signup.html">Sign Up</a></li>
           <li id="home_issue"><a href="issues.html">Issues</a></li>
+          <li id="home_logout"><a id="signoutbtn" href="#">Log Out</a></li>
         </ul>
       </nav>
     </div>
@@ -41,6 +42,17 @@
   </ul>
 
   <script>
+    document.getElementById('signoutbtn').addEventListener('click', logout);
+
+    function logout(){
+      console.log('logging out');
+      firebase.auth().signOut();
+      document.getElementById('home_issue').style.display = "none";
+      document.getElementById('home_logout').style.display = "none";
+      document.getElementById('home_login').style.display = "inline";
+      document.getElementById('home_signup').style.display = "inline";
+    }
+
     window.onload = function(){
       init();
     };
@@ -50,6 +62,7 @@
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
           document.getElementById('home_issue').style.display = "inline";
+          document.getElementById('home_logout').style.display = "inline";
         }else{
           document.getElementById('home_login').style.display = "inline";
           document.getElementById('home_signup').style.display = "inline";

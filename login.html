@@ -61,11 +61,15 @@
       });
     }
     
+    window.onload = function(){
+      init();
+    };
+
     function init(){
       console.log('initializing...');
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
-          location.href = "index.html"
+          location.href = "index.html";
         }
       });
     }

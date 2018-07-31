@@ -25,7 +25,8 @@ button {
 
 #home_login,
 #home_signup,
-#home_issue {
+#home_issue,
+#home_logout {
     display: none;
 }
 
