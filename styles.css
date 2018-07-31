@@ -23,6 +23,12 @@ button {
     overflow: hidden;
 }
 
+#home_login,
+#home_signup,
+#home_issue {
+    display: none;
+}
+
 header {
     background: black;
     color: white;

@@ -14,14 +14,13 @@
 
 </head>
 
-<body onload="init()">
+<body>
   <header>
     <div class="container">
       <h1 id="header">Welcome to Issue Tracker!</h1>
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="issues.html">Issues</a></li>
         </ul>
       </nav>
     </div>
@@ -43,6 +42,8 @@
   </section>
 
   <script>
+    document.getElementById('signupbtn').addEventListener('click', signup);
+    
     function signup(){
       console.log('signing up...');
       var email = document.getElementById('email').value;
@@ -54,6 +55,10 @@
       });
     }
 
+    window.onload = function(){
+      init();
+    };
+
     function init(){
       console.log('initializing...');
       firebase.auth().onAuthStateChanged(function(user) {
@@ -62,8 +67,6 @@
         }
       });
     }
-
-    document.getElementById('signupbtn').addEventListener('click', signup);
   </script>
 
 </body>

@@ -8,9 +8,28 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="icon" href="images/favicon.png">
   <title>Index</title>
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script src="initFirebase.js"></script>
+
 </head>
 
 <body>
+
+  <header>
+    <div class="container"> 
+      <h1 id="header">Welcome to Issue Tracker!</h1>
+      <nav>
+        <ul>
+          <li id="home_login"><a href="login.html">Log In</a></li>
+          <li id="home_signup"><a href="signup.html">Sign Up</a></li>
+          <li id="home_issue"><a href="issues.html">Issues</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
   <h1>Index for CSE134B HW2</h1>
   <ul>
     <li><a href="login.html">A login form</a></li>
@@ -20,6 +39,25 @@
     <li><a href="issues.html">An issues list page (table) that links to issues</a></li>
     <li><a href="issues.html">Issue details page for each issue in the table</a> (Access from the issues page)</li>
   </ul>
+
+  <script>
+    window.onload = function(){
+      init();
+    };
+
+    function init(){
+      console.log('initializing...');
+      firebase.auth().onAuthStateChanged(function(user) {
+        if(user){
+          document.getElementById('home_issue').style.display = "inline";
+        }else{
+          document.getElementById('home_login').style.display = "inline";
+          document.getElementById('home_signup').style.display = "inline";
+        }
+      });
+    }
+  </script>
+
 </body>
 
 </html>

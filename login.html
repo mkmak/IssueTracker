@@ -18,7 +18,7 @@
 
 </head>
 
-<body onload="init()" id="body">
+<body>
 
   <header>
     <div class="container"> 
@@ -26,7 +26,6 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="issues.html">Issues</a></li>
         </ul>
       </nav>
     </div>
@@ -49,6 +48,8 @@
   </section>
 
   <script>
+    document.getElementById('signinbtn').addEventListener('click', signin);
+
     function signin(){
       console.log('signing in...');
       var email = document.getElementById('email').value;
@@ -59,7 +60,7 @@
         console.log(error.message);
       });
     }
-
+    
     function init(){
       console.log('initializing...');
       firebase.auth().onAuthStateChanged(function(user) {
@@ -68,8 +69,6 @@
         }
       });
     }
-
-    document.getElementById('signinbtn').addEventListener('click', signin);
   </script>
 
 </body>
