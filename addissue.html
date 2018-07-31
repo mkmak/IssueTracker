@@ -40,7 +40,7 @@
             <label>Issue Title</label>
           </div>
           <div class="col2">
-            <input name="title" type="text" placeholder="Enter Issue Title" value="Signup Page Validation">
+            <input name="title" type="text" id="issuetitle" placeholder="Enter Issue Title" value="">
           </div>
         </div>
         <br>
@@ -49,7 +49,7 @@
             <label>Issue Type</label>
           </div>
           <div class="col2">
-            <input name="type" type="text" placeholder="Enter Issue Type" value="HTML Content">
+            <input name="type" type="text" id="issuetype" placeholder="Enter Issue Type" value="">
           </div>
         </div>
         <br>
@@ -58,7 +58,7 @@
             <label>Issue Description</label>
           </div>
           <div class="col2">
-            <textarea name="desc" rows="8" cols="50">login.html yields three errors in the w3 validator</textarea>
+            <textarea name="desc" id="issuedesc" rows="8" cols="50"></textarea>
           </div>
         </div>
         <br>
@@ -74,17 +74,30 @@
         <!-- <input type="submit">
         <input type="reset"> -->
       </form>
-      <button type="button" onclick="location.href='issues_added.html'">Submit</button>
+      <button type="button" id="submit-firebase">Submit</button>
       <button type="button">Reset</button>
     </div>
   </section>
   
   <script>
-      function logout(){
-        firebase.auth().signOut();
-      }
-  
-      document.getElementById('signoutbtn').addEventListener('click', logout);
+    function logout(){
+      firebase.auth().signOut();
+    }
+
+    document.getElementById('signoutbtn').addEventListener('click', logout);
+
+    var db = firebase.firestore();
+    const settings = {timestampsInSnapshots: true};
+    db.settings(settings);
+
+    var submit_fb_button = document.getElementById("submit-firebase");
+    submit_fb_button.addEventListener("click", function() {
+      db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').add({
+        title: document.getElementById('issuetitle').value,
+        type: document.getElementById('issuetype').value,
+        description: document.getElementById('issuedesc').value
+      });
+    });
     </script>
 
 </body>
