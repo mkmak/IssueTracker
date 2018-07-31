@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
   <header>
     <div class="container">
       <h1 id="header">Welcome to Issue Tracker!</h1>
@@ -31,10 +30,10 @@
       <form>
         <fieldset>
           <legend>Sign Up For An Account:</legend>
-          Username: <input type="text"><br>
-          Password: <input type="password"><br>
+          Username: <input id="email" type="text"><br>
+          Password: <input id="password" type="password"><br>
           <p></p>
-          <button type="submit">Sign up</button>
+          <button type="submit" onclick="handleSignUp()">Sign up</button>
         </fieldset>
       </form> 
       <p>Already have an account? <a href="login.html">Log in here</a></p>

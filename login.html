@@ -12,10 +12,24 @@
     html, head, meta, link, title, body, main, article, header, h1, h2, h3, nav, ul
     li, a, hr, section, h2, form, fieldset, legend, input, br, p, button, form, 
   -->
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBpT4Da1QDwhhFQLPmTFZqofGSExaDlKhc",
+      authDomain: "b-hw2-38225.firebaseapp.com",
+      databaseURL: "https://b-hw2-38225.firebaseio.com",
+      projectId: "b-hw2-38225",
+      storageBucket: "b-hw2-38225.appspot.com",
+      messagingSenderId: "414413271526"
+    };
+    firebase.initializeApp(config);
+  </script>
+
 </head>
 
-<body>
-<main>
+<body onload="init()" id="body">
 
   <header>
     <div class="container"> 
@@ -33,21 +47,41 @@
 
   <section>
     <div class="container">
-      <form>
-          <fieldset>
-            <legend>Log In:</legend>
-            Username: <input type="text"><br>
-            Password: <input type="password"><br>
-            <a href="">Forgot password?</a><br>
-            <p></p>
-            <button type="submit">Sign in</button>
-          </fieldset>
-      </form> 
+      <fieldset>
+        <legend>Log In:</legend>
+        Email: <input id="email" type="text" placeholder="Enter your email..."><br>
+        Password: <input id="password" type="password" placeholder="Enter your password..."><br>
+        <a href="">Forgot password?</a><br>
+        <p></p>
+        <button id="signinbtn">Sign In</input>
+      </fieldset>
       <p>New to Issue Tracker? <a href="signup.html">Create a new account</a></p>
     </div>
   </section>
 
-</main>
+  <script>
+    function signin(){
+      console.log('signing in...');
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        console.log(error.message);
+      });
+    }
+
+    function init(){
+      console.log('initializing...');
+      firebase.auth().onAuthStateChanged(function(user) {
+        if(user){
+          location.href = "index.html"
+        }
+      });
+    }
+
+    document.getElementById('signinbtn').addEventListener('click', signin);
+  </script>
+
 </body>
 
 </html>
