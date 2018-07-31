@@ -70,9 +70,10 @@
           var email = document.getElementById('email').value;
           db.collection('users').doc(user.uid).set({
             email: email
+          })
+          .then(function() {
+            location.href = "index.html";
           });
-
-          location.href = "index.html"
         }
       });
     }
