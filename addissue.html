@@ -98,14 +98,20 @@
       issue_ref.set({
         title: document.getElementById('issuetitle').value,
         type: document.getElementById('issuetype').value,
-        description: document.getElementById('issuedesc').value
-      });
-      
-      var issue_id = issue_ref.id;
-      var storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid).child(issue_id);
-      var file = document.getElementById('file').files[0];
-      storageRef.child(file.name).put(file).then(function(){
-        location.href = "issues.html";
+        description: document.getElementById('issuedesc').value,
+        open: true
+      }).then(function(){
+        if(document.getElementById('file').files.length > 0) {
+          var issue_id = issue_ref.id;
+          var storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid).child(issue_id);
+          var file = document.getElementById('file').files[0];
+          storageRef.child(file.name).put(file).then(function(){
+            location.href = "issues.html";
+          });
+        }
+        else{
+          location.href = "issues.html";
+        }
       });
     });
 
