@@ -46,6 +46,10 @@
     }
 
     var issue_id = new String('123');
+    var url = window.location.href;
+    var pos = url.lastIndexOf('id=');
+    console.log(pos);
+
     var db = firebase.firestore()
     const settings = {timestampsInSnapshots: true};
     db.settings(settings);
@@ -59,7 +63,7 @@
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
           db.collection('users').doc(user.uid).collection('issues').doc('123').get().then(function(doc){
-            console.log(doc);
+            console.log(doc.data().title);
           });
         }
         else{
