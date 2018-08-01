@@ -103,6 +103,7 @@
     </table>
     <br>
     <button id="addbtn" type="button" onclick="window.location.href='addissue.html'">Add Issue</button><br>
+    <button id="loadbutton" type="button">Load Issues from Realtime DB (REST)</button><br>
     <noscript>
       <br><a href="addissue.html">Link to Add Issue</a>
     </noscript>
@@ -148,7 +149,7 @@
 
     // template access
     var row_temp = document.getElementsByTagName("template")[0].content.querySelector("tr");
-    var table = document.getElementById('issues-table')
+    var table = document.getElementById('issues-table');
 
 
     // wait on auth, then load issues
@@ -192,6 +193,29 @@
         }
       }
     });
+
+    // Get issues from Realtime Database
+    document.getElementById('loadbutton').addEventListener('click', function() {
+      var table = document.getElementById('issues-table');
+      for (var i = 1, row; row = table.getElementsByTagName('tr')[i]; i) {
+        row.remove();
+      }
+      firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if(xhttp.readyState === 4 && xhttp.status === 200) {
+            populate(JSON.parse(xhttp.responseText));
+          }
+        };
+        xhttp.open("GET", "https://b-hw2-38225.firebaseio.com/issues.json?auth=" + idToken, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send('');
+      });
+    });
+
+    function populate(data) {
+      console.log(data);
+    }
   </script>
 
 </body>

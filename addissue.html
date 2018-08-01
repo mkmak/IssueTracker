@@ -127,7 +127,8 @@
         xhttp.open("POST", "https://b-hw2-38225.firebaseio.com/issues.json?auth=" + idToken, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(JSON.stringify(data));
-      });
+      })
+      .then(function() {location.href = 'issues.html';});
     });
     </script>
 
