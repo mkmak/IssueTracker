@@ -71,11 +71,9 @@
           </div>
         </div>
         <br>
-        <!-- <input type="submit">
-        <input type="reset"> -->
+        <button type="button" id="submit-firebase">Submit</button>
+        <button type="button" id="submit-REST">Submit via REST</button>
       </form>
-      <button type="button" id="submit-firebase">Submit</button>
-      <button type="button">Reset</button>
     </div>
   </section>
   
@@ -91,7 +89,7 @@
     db.settings(settings);
       
 
-
+    // Firebase Firestore API
     var submit_fb_button = document.getElementById("submit-firebase");
     submit_fb_button.addEventListener("click", function() {
       var issue_ref = db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc();
@@ -115,6 +113,22 @@
       });
     });
 
+    // Firebase Realtime database REST API
+    var submit_db_button = document.getElementById("submit-REST");
+    submit_db_button.addEventListener('click', function() {
+      let data = {
+        'title': document.getElementById('issuetitle').value,
+        'type': document.getElementById('issuetype').value,
+        'description': document.getElementById('issuedesc').value,
+        'open': true
+      }
+      firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "https://b-hw2-38225.firebaseio.com/issues.json?auth=" + idToken, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(JSON.stringify(data));
+      });
+    });
     </script>
 
 </body>
