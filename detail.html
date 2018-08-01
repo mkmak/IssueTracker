@@ -33,7 +33,7 @@
 
   <section>
     <div class="container">
-      <img class="issue_img" alt="issue screenshot">
+      <img id="issue_img">
       <p id="issue_p"></p>
     </div>
   </section>
@@ -63,12 +63,14 @@
         if(user){
           db.collection('users').doc(user.uid).collection('issues').doc(issue_id).get().then(function(doc){
             document.getElementById('header').innerHTML = doc.data().title;
-            document.getElementById('issue_p').innerHTML = doc.data().description;
+            document.getElementById('issue_p').innerText = doc.data().description;
 
             var storageRef = firebase.storage().ref().child(user.uid).child(issue_id);
 
             storageRef.child(issue_id +'.png').getDownloadURL().then(function(url){
+              document.getElementById('issue_img').style.display = "block";
               document.getElementById('issue_img').src = url;
+              document.getElementById('issue_img').style.height = "500px";
             });
           });
         }
@@ -77,7 +79,6 @@
         }
       });
     }
-    
     
   </script>
 
