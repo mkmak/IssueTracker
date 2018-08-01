@@ -40,7 +40,7 @@
             <label>Issue Title</label>
           </div>
           <div class="col2">
-            <input name="title" type="text" placeholder="Enter Issue Title">
+            <input name="title" type="text" id="issuename" placeholder="Loading..">
           </div>
         </div>
         <br>
@@ -49,7 +49,7 @@
               <label>Issue Type</label>
             </div>
             <div class="col2">
-              <input name="type" type="text" placeholder="Enter Issue Type">
+              <input name="type" type="text" id="issuetype" placeholder="Loading..">
             </div>
           </div>
         <br>
@@ -58,7 +58,7 @@
             <label>Issue Description</label>
           </div>
           <div class="col2">
-            <textarea name="desc" rows="8" cols="50" placeholder="Enter description"></textarea>
+            <textarea name="desc" rows="8" cols="50" id="issuedesc" placeholder="Loading.."></textarea>
           </div>
         </div>
         <br>
@@ -67,25 +67,71 @@
             <label>Issue Attachment: </label>
           </div>
           <div class="col2">
-            <input type="file">
+            <input id="file" type="file">
           </div>
         </div>
         <br>
         <!-- <input type="submit">
         <input type="reset"> -->
       </form>
-      <button type="button" onclick="location.href='issues_added.html'">Submit</button>
-      <button type="button">Reset</button>
+      <button type="button" id="submit-button">Submit</button>
     </div>
   </section>
 
   <script>
-      function logout(){
-        firebase.auth().signOut();
-      }
-  
-      document.getElementById('signoutbtn').addEventListener('click', logout);
-    </script>
+    function logout(){
+      firebase.auth().signOut();
+    }
+
+    document.getElementById('signoutbtn').addEventListener('click', logout);
+
+    var db = firebase.firestore()
+    const settings = {timestampsInSnapshots: true};
+    db.settings(settings);
+
+
+    var url = window.location.href;
+    var pos = url.lastIndexOf('id=');
+    var issue_id = url.slice(pos+3, url.length);
+
+    window.onload = function(){
+      init();
+    };
+    function init(){
+      console.log('initializing...');
+      firebase.auth().onAuthStateChanged(function(user) {
+        if(user){
+          db.collection('users').doc(user.uid).collection('issues').doc(issue_id).get().then(function(doc){
+            console.log(doc.data());
+            document.getElementById('issuename').value = doc.data().title;
+            document.getElementById('issuetype').value = doc.data().type;
+            document.getElementById('issuedesc').value = doc.data().description;
+
+          });
+        }
+      });
+    }
+
+    document.getElementById('submit-button').addEventListener('click', function() {
+      db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(issue_id).set({
+        title: document.getElementById('issuename').value,
+        type: document.getElementById('issuetype').value,
+        description: document.getElementById('issuedesc').value
+      }, {merge: true})
+      .then(function() {
+        if(document.getElementById('file').files.length > 0) {
+          var storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid).child(issue_id);
+          var file = document.getElementById('file').files[0];
+          storageRef.child(issue_id+'.png').put(file).then(function(){
+            location.href = "issues.html";
+          });
+        }
+        else{
+          location.href = "issues.html";
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

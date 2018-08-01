@@ -18,7 +18,7 @@
 <body>
   <header>
     <div class="container">
-      <h2 id="header"></h2>
+      <h2 id="header">Issue Detail</h2>
       <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -33,8 +33,15 @@
 
   <section>
     <div class="container">
+      <h3>Issue Name:</h3>
+      <div id="issuename">Loading..</div>
+      <h3>Issue Type:</h3>
+      <div id="issuetype">Loading..</div>
+      <h3>Issue Description:</h3>
+      <div id="issuedesc">Loading..</div>
       <img id="issue_img">
-      <p id="issue_p"></p>
+      <p></p>
+      <button type="button" id="edit-button">Edit Issue</button>
     </div>
   </section>
 
@@ -62,8 +69,9 @@
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
           db.collection('users').doc(user.uid).collection('issues').doc(issue_id).get().then(function(doc){
-            document.getElementById('header').innerHTML = doc.data().title;
-            document.getElementById('issue_p').innerText = doc.data().description;
+            document.getElementById('issuename').innerHTML = doc.data().title;
+            document.getElementById('issuetype').innerHTML = doc.data().type;
+            document.getElementById('issuedesc').innerText = doc.data().description;
 
             var storageRef = firebase.storage().ref().child(user.uid).child(issue_id);
 
@@ -79,6 +87,10 @@
         }
       });
     }
+
+    document.getElementById('edit-button').addEventListener('click', function() {
+      location.href = 'editissue.html?id=' + issue_id;
+    });
     
   </script>
 
