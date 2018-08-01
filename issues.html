@@ -12,17 +12,6 @@
 
   <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
   <script src="initFirebase.js"></script>
-
-  <script>
-    function toggle(btn) {
-      if (btn.innerHTML == "Open") btn.innerHTML = "Closed";
-      else btn.innerHTML = "Open";
-    }
-    function remove(link) {
-      link.parentElement.parentElement.remove();
-    }
-  </script>
-
 </head>
 <body>
   <header>
@@ -42,9 +31,19 @@
     <noscript>
       <p>Javascript must be enabled for some functionalities to work.</p>
     </noscript>
+    <template>
+      <tr>
+        <td class="issuename"><a href=""></a></td>
+        <td class="issuetype"></td>
+        <td class="issuedesc"></td>
+        <td class="issuestat"><button class="button-block" onclick="toggle(this)"></button></td>
+        <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
+                            <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
+        </td>
+      </tr>
+    </template>
     <table id="issues-table">
       <colgroup>
-        <col class="issueid">
         <col class="issuename">
         <col class="issuetype">
         <col class="issuedesc">
@@ -52,7 +51,6 @@
         <col class="issueact">
       </colgroup>
       <tr>
-        <th class="issueid">Issue Id</th>
         <th class="issuename">Issue Name</th>
         <th class="issuetype">Issue Type</th>
         <th class="issuedesc">Issue Description</th>
@@ -60,6 +58,9 @@
         <th class="issueact">Action</th>
       </tr>
       <tr>
+        <td colspan="5">Loading...</th>
+      </tr>
+      <!-- <tr>
         <td class="issueid">1</td>
         <td class="issuename"><a href="issue1.html">IE6 not supported</a></td>
         <td class="issuetype">Browser-specific</td>
@@ -98,7 +99,7 @@
         <td class="issueact"><button class="button-block" onclick="location.href='editissue.html'">Edit <img class="icon" width="15" height="15" src="images/edit_icon.png" alt="edit"></button>
                           <button class="button-block" onclick="remove(this)">Delete <img class="icon" width="15" height="15" src="images/delete_icon.svg" alt="delete"></button>
                       </td>
-      </tr>
+      </tr> -->
     </table>
     <br>
     <button id="addbtn" type="button" onclick="window.location.href='addissue.html'">Add Issue</button><br>
@@ -108,11 +109,62 @@
   </div>
 
   <script>
+    function toggle(btn) {
+      if (btn.innerHTML == "Open") {
+        btn.innerHTML = "Closed";
+        var change_id = btn.parentElement.parentElement.getAttribute('data-id');
+        db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(change_id).set({
+          open: false
+        });
+
+      }
+      else {
+        btn.innerHTML = "Open";
+      }
+    }
+    function remove(link) {
+      link.parentElement.parentElement.remove();
+    }
+
     function logout(){
       firebase.auth().signOut();
     }
-
     document.getElementById('signoutbtn').addEventListener('click', logout);
+
+    // firebase
+    var db = firebase.firestore();
+    const settings = {timestampsInSnapshots: true};
+    db.settings(settings);
+
+    // template access
+    var row_temp = document.getElementsByTagName("template")[0].content.querySelector("tr");
+    var table = document.getElementById('issues-table')
+
+
+    // wait on auth, then load issues
+    firebase.auth().onAuthStateChanged(function() {
+      db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').get()
+      .then(function(querySnapshot){
+        document.getElementsByTagName('tr')[1].remove();
+        querySnapshot.forEach(function(doc) {
+          console.log(doc.id, " => ", doc.data());
+          new_row = document.importNode(row_temp, true);
+          
+          new_row.setAttribute('data-id', doc.id);
+          new_row.getElementsByClassName('issuename')[0].getElementsByTagName('a')[0].innerHTML = doc.data().title;
+          new_row.getElementsByClassName('issuename')[0].getElementsByTagName('a')[0].setAttribute('href', 'detail.html?id='+doc.id);
+          new_row.getElementsByClassName('issuetype')[0].innerHTML = doc.data().type;
+          new_row.getElementsByClassName('issuedesc')[0].innerHTML = doc.data().description;
+          if (doc.data().open === true) {
+            new_row.getElementsByClassName('issuestat')[0].getElementsByTagName('button')[0].innerHTML = 'Open';
+          } else {
+            new_row.getElementsByClassName('issuestat')[0].getElementsByTagName('button')[0].innerHTML = 'Closed';
+          }
+          table.appendChild(new_row);
+        });
+      });
+    });
+    
   </script>
 
 </body>

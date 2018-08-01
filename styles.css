@@ -125,7 +125,7 @@ th, td {
     padding: 6px;
 }
 
-tr:nth-child(even) {
+tr:nth-child(odd) {
     background: #ddf4ff;
 }
 
