@@ -8,6 +8,8 @@ body {
     line-height: 1.5;
 }
 
+
+
 button {
     font-size: 80%;
     border: 2px solid #00a7f5;
@@ -26,7 +28,8 @@ button {
 #home_login,
 #home_signup,
 #home_issue,
-#home_logout {
+#home_logout
+#issue_img {
     display: none;
 }
 
@@ -61,7 +64,7 @@ nav a:hover{
     background: red;
 }
 
-.issue_img{
+#issue_img{
     display: block;
     margin-left: auto;
     margin-right: auto;
