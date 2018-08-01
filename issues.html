@@ -110,19 +110,29 @@
 
   <script>
     function toggle(btn) {
+      var change_id = btn.parentElement.parentElement.getAttribute('data-id');
       if (btn.innerHTML == "Open") {
         btn.innerHTML = "Closed";
-        var change_id = btn.parentElement.parentElement.getAttribute('data-id');
         db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(change_id).set({
           open: false
-        });
-
+        }, {merge: true});
       }
       else {
         btn.innerHTML = "Open";
+        db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(change_id).set({
+          open: true
+        }, {merge: true});
       }
     }
     function remove(link) {
+      var change_id = link.parentElement.parentElement.getAttribute('data-id');
+      db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(change_id).delete()
+      .then(function() {
+        console.log("Document successfully deleted!");
+      })
+      .catch(function(error) {
+        console.error("Error removing document: ", error);
+      });
       link.parentElement.parentElement.remove();
     }
 
