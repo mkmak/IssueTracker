@@ -1,11 +1,10 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
 
 body {
     font-family: 'Muli', sans-serif;
     line-height: 1.5;
+    padding: 0px;
+    margin: 0px;
 }
 
 button {
@@ -18,7 +17,7 @@ button {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: auto;
     overflow: hidden;
 }
@@ -88,6 +87,10 @@ nav a:visited{
     color: white;
 }
 
+button.delete-button:hover {
+    background: #ff6b6b;
+}
+
 button[type="submit"]{
     margin: 5px;
 }
@@ -114,6 +117,7 @@ button:hover {
 
 table {
     border-collapse: collapse;
+    max-width: 1000px;
 }
 
 .issueact {
