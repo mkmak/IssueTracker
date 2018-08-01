@@ -103,7 +103,7 @@
     </table>
     <br>
     <button id="addbtn" type="button" onclick="window.location.href='addissue.html'">Add Issue</button><br>
-    <button id="loadbutton" type="button">Load Issues from Realtime DB (REST)</button><br>
+    <button id="loadbutton" type="button">Switch to Realtime Database</button><br>
     <noscript>
       <br><a href="addissue.html">Link to Add Issue</a>
     </noscript>
@@ -127,6 +127,11 @@
     }
     function remove(link) {
       var change_id = link.parentElement.parentElement.getAttribute('data-id');
+
+      ref.child(change_id).remove().then(function(){
+        console.log('issue deleted from realtime database');
+      });
+
       db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(change_id).delete()
       .then(function() {
         console.log("Document successfully deleted!");
@@ -146,6 +151,9 @@
     var db = firebase.firestore();
     const settings = {timestampsInSnapshots: true};
     db.settings(settings);
+
+    var ref = firebase.database().ref('issues');
+    var state = "firestore";
 
     // template access
     var row_temp = document.getElementsByTagName("template")[0].content.querySelector("tr");
@@ -196,25 +204,54 @@
 
     // Get issues from Realtime Database
     document.getElementById('loadbutton').addEventListener('click', function() {
-      var table = document.getElementById('issues-table');
-      for (var i = 1, row; row = table.getElementsByTagName('tr')[i]; i) {
-        row.remove();
+
+      if(state === 'firestore'){
+        state = 'realtime';
+        document.getElementById('loadbutton').innerHTML = 'Switch to Cloud Firestore';
+        var table = document.getElementById('issues-table');
+        for (var i = 1, row; row = table.getElementsByTagName('tr')[i]; i) {
+          row.remove();
+        }
+        firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if(xhttp.readyState === 4 && xhttp.status === 200) {
+              populate(JSON.parse(xhttp.responseText));
+            }
+          };
+          xhttp.open("GET", "https://b-hw2-38225.firebaseio.com/issues.json?auth=" + idToken, true);
+          xhttp.setRequestHeader("Content-type", "application/json");
+          xhttp.send('');
+        });
+      }else{
+        location.href = 'issues.html';
       }
-      firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if(xhttp.readyState === 4 && xhttp.status === 200) {
-            populate(JSON.parse(xhttp.responseText));
-          }
-        };
-        xhttp.open("GET", "https://b-hw2-38225.firebaseio.com/issues.json?auth=" + idToken, true);
-        xhttp.setRequestHeader("Content-type", "application/json");
-        xhttp.send('');
-      });
     });
 
     function populate(data) {
       console.log(data);
+      
+      ref.once('value', function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+          ref.child(childSnapshot.key).once('value').then(function(s){
+
+            new_row = document.importNode(row_temp, true);
+            new_row.setAttribute('data-id', childSnapshot.key);
+            new_row.getElementsByClassName('issuename')[0].getElementsByTagName('a')[0].innerHTML = s.val().title;
+            new_row.getElementsByClassName('issuename')[0].getElementsByTagName('a')[0].setAttribute('href', 'detail.html?id='+childSnapshot.key);
+            new_row.getElementsByClassName('issuetype')[0].innerHTML = s.val().type;
+            new_row.getElementsByClassName('issuedesc')[0].innerHTML = s.val().description;
+            if (s.val().open === true) {
+              new_row.getElementsByClassName('issuestat')[0].getElementsByTagName('button')[0].innerHTML = 'Open';
+            } else {
+              new_row.getElementsByClassName('issuestat')[0].getElementsByTagName('button')[0].innerHTML = 'Closed';
+            }
+            table.appendChild(new_row);
+          });
+        });
+
+      });
+    
     }
   </script>
 
