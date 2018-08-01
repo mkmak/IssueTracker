@@ -19,7 +19,7 @@ button {
 }
 
 .container {
-    width: 90%;
+    padding: 10px 20px;
     margin: auto;
     overflow: hidden;
 }
@@ -120,11 +120,34 @@ button:hover {
 
 table {
     border-collapse: collapse;
+    width: 100%;
     max-width: 1000px;
+}
+
+.issuename {
+    max-width: 45px;
+}
+
+.issuetype {
+    max-width: 50px;
+}
+
+.issuestat {
+    width: 25px;
+    text-align: center;
+}
+
+.issuestat button {
+    min-width: 60px;
 }
 
 .issueact {
     width: 95px;
+    text-align: center;
+}
+
+td > button {
+    margin: auto;
 }
 
 th, td {
@@ -159,7 +182,11 @@ button-block {
     display: inline-block;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
+    table {
+        
+    }
+
     .issueid {
         display: none;
     }
@@ -172,7 +199,7 @@ button-block {
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 400px) {
     .issueid {
         display: none;
     }
