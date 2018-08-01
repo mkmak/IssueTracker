@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" media="print" href="print.css" type="text/css">
+  <link rel="icon" href="images/favicon.png">
+  <title>Issue Detail</title>
+
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script src="initFirebase.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h2 id="header"></h2>
+      <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="issues.html">Issues</a></li>
+            <li><a id="signoutbtn" href="index.html">Log Out</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <hr>
+
+  <section>
+    <div class="container">
+      <img class="issue_img" alt="issue screenshot">
+      <p></p>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('signoutbtn').addEventListener('click', logout);
+
+    function logout(){
+      firebase.auth().signOut();
+    }
+
+    var db = firebase.firestore();
+  </script>
+
+</body>
+
+</html>

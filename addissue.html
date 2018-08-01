@@ -94,27 +94,21 @@
 
     var submit_fb_button = document.getElementById("submit-firebase");
     submit_fb_button.addEventListener("click", function() {
-      db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').add({
+      var issue_ref = db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc();
+      issue_ref.set({
         title: document.getElementById('issuetitle').value,
         type: document.getElementById('issuetype').value,
         description: document.getElementById('issuedesc').value
       });
-
-
-      var issue_id;
-      db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').get().then(function(querySnapshot){
-        querySnapshot.forEach(function(doc){
-          issue_id = doc.id;
-          var storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid).child(issue_id);
-          var file = document.getElementById('file').files[0];
-          storageRef.child(file.name).put(file);
-        });
-      })
-      .then(function() {
+      
+      var issue_id = issue_ref.id;
+      var storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid).child(issue_id);
+      var file = document.getElementById('file').files[0];
+      storageRef.child(file.name).put(file).then(function(){
         location.href = "issues.html";
       });
-
     });
+
     </script>
 
 </body>
