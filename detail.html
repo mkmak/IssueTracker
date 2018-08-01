@@ -76,9 +76,7 @@
             var storageRef = firebase.storage().ref().child(user.uid).child(issue_id);
 
             storageRef.child(issue_id +'.png').getDownloadURL().then(function(url){
-              document.getElementById('issue_img').style.display = "block";
               document.getElementById('issue_img').src = url;
-              document.getElementById('issue_img').style.height = "500px";
             });
           });
         }
