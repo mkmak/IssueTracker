@@ -105,7 +105,7 @@
           var issue_id = issue_ref.id;
           var storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid).child(issue_id);
           var file = document.getElementById('file').files[0];
-          storageRef.child(file.name).put(file).then(function(){
+          storageRef.child(issue_id+'.png').put(file).then(function(){
             location.href = "issues.html";
           });
         }

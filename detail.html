@@ -34,7 +34,7 @@
   <section>
     <div class="container">
       <img class="issue_img" alt="issue screenshot">
-      <p></p>
+      <p id="issue_p"></p>
     </div>
   </section>
 
@@ -45,10 +45,9 @@
       firebase.auth().signOut();
     }
 
-    var issue_id = new String('123');
     var url = window.location.href;
     var pos = url.lastIndexOf('id=');
-    console.log(pos);
+    var issue_id = url.slice(pos+3, url.length);
 
     var db = firebase.firestore()
     const settings = {timestampsInSnapshots: true};
@@ -62,8 +61,15 @@
       console.log('initializing...');
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
-          db.collection('users').doc(user.uid).collection('issues').doc('123').get().then(function(doc){
-            console.log(doc.data().title);
+          db.collection('users').doc(user.uid).collection('issues').doc(issue_id).get().then(function(doc){
+            document.getElementById('header').innerHTML = doc.data().title;
+            document.getElementById('issue_p').innerHTML = doc.data().description;
+
+            var storageRef = firebase.storage().ref().child(user.uid).child(issue_id);
+
+            storageRef.child(issue_id +'.png').getDownloadURL().then(function(url){
+              document.getElementById('issue_img').src = url;
+            });
           });
         }
         else{
