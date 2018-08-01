@@ -31,6 +31,7 @@
     <noscript>
       <p>Javascript must be enabled for some functionalities to work.</p>
     </noscript>
+    <input type="checkbox" id="filter-checkbox"> Show only open issues<br>
     <template>
       <tr>
         <td class="issuename"><a href=""></a></td>
@@ -156,7 +157,7 @@
       .then(function(querySnapshot){
         document.getElementsByTagName('tr')[1].remove();
         querySnapshot.forEach(function(doc) {
-          console.log(doc.id, " => ", doc.data());
+          // console.log(doc.id, " => ", doc.data());
           new_row = document.importNode(row_temp, true);
           
           new_row.setAttribute('data-id', doc.id);
@@ -174,6 +175,23 @@
       });
     });
     
+    // Open issue filter checkbox
+    document.getElementById("filter-checkbox").addEventListener('change', function() {
+      var table = document.getElementById('issues-table');
+      if (this.checked) {
+        for (var i = 1, row; row = table.rows[i]; i++) {
+          if (row.getElementsByTagName('button')[0].innerHTML === 'Closed') {
+            row.style.visibility = "collapse";
+          }
+        }
+      } else {
+        for (var i = 1, row; row = table.rows[i]; i++) {
+          if (row.getElementsByTagName('button')[0].innerHTML === 'Closed') {
+            row.style.visibility = "visible";
+          }
+        }
+      }
+    });
   </script>
 
 </body>
