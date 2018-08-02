@@ -4,16 +4,27 @@
   <meta charset="utf-8" />
   <!-- <base href="https://b-hw2-38225.firebaseapp.com/"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+  <style>
+    header p,nav ul{float:right}header,nav li{background:#000;color:#fff}body,input{line-height:1.5}header,nav a,nav a:visited,nav li{color:#fff}body{font-family:Muli,sans-serif;padding:0;margin:0}button{font-size:80%;border:2px solid #00a7f5;border-radius:3px;padding:4px 8px;background:#c6edff;cursor:pointer}.container{padding:10px 20px;margin:auto;overflow:hidden}#home_issue,#home_login,#home_logout #issue_img,#home_signup{display:none}header{min-height:70px}header #header{float:left;padding:15px}nav ul{padding:20px 15px 15px}nav li{display:inline;padding:5px 15px}nav a:hover{background:red}#issue_img{display:block;margin-left:auto;margin-right:auto;padding-bottom:15px}hr{margin:10px 0}legend{padding:0 10px}button.delete-button:hover{background:#ff6b6b}button:hover,th{background:#7ad5ff}button[type=submit]{margin:5px}.col1,.col2{float:left;margin-top:6px}.row{padding:7px}.col1{width:25%}.col2{width:75%}table{border-collapse:collapse;width:100%;max-width:1000px}.issuename{max-width:45px}.issuetype{max-width:50px}.issuestat{width:25px;text-align:center}.issuestat button{min-width:60px}.issueact{width:95px;text-align:center}td>button{margin:auto}td,th{border:1px solid #bbb;padding:6px}tr:nth-child(odd){background:#ddf4ff}tr:hover{background:#bfebff}img{max-width:100%;height:auto}img.icon{height:15px;width:15px}button-block{border:2px solid #00a7f5;display:inline-block}@media screen and (max-width:600px){.issuedesc,.issueid{display:none}.col1,.col2,textarea{width:100%;margin-top:3px}}@media screen and (max-width:400px){.issuedesc,.issueid,.issuetype{display:none}}
+  </style>
+  <meta name="theme-color" content="#33a4fd">
   <title>Page Title</title>
   <!-- This page utilizes the following html tags: 
 		html, head, title, body, main, article, form,
 		h1, header, small, p, label, time, br, input, button, 
   -->
 
-  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-  <script src="initFirebase.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(function () {
+          console.log('Service Worker Registered');
+        });
+    }
+  </script>
+  <link rel="manifest" href="manifest.json">
 
 </head>
 <body>
@@ -78,13 +89,33 @@
   </section>
   
   <script>
+    (function() {
+      var link = document.createElement('link');
+      link.rel = "stylesheet";
+      link.href = "//fonts.googleapis.com/css?family=Muli";
+      document.querySelector("head").appendChild(link);
+    })();
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+  <script src="initFirebase.js"></script>
+  <script>
     document.getElementById('signoutbtn').addEventListener('click', logout);
 
     function logout(){
       firebase.auth().signOut();
     }
 
-    var db = firebase.firestore();
+    firebase.firestore().enablePersistence()
+    .then(function() {
+      var db = firebase.firestore();
+    })
+    .catch(function(err) {
+      if (err.code == 'failed-precondition') {
+        alert('Multiple tabs opened. Please close the other ones.')
+      } else if (err.code == 'unimplemented') {
+        alert('Your browser does not support offline features.')
+      }
+    });
     const settings = {timestampsInSnapshots: true};
     db.settings(settings);
     
