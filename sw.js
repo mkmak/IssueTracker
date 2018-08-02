@@ -1,9 +1,18 @@
-var cacheName = 'hello-world-page';
+var cacheName = 'issue-tracker';
 var filesToCache = [
   '/',
   '/index.html',
-  'issues.html',
-  '/styles.css'
+  '/issues.html',
+  '/addissue.html',
+  '/detail.html',
+  '/editissue.html',
+  '/login.html',
+  '/signup.html',
+  '/images/delete_icon.svg',
+  '/images/edit_icon.png',
+  '/images/favicon.png',
+  '/images/delete_icon.svg',
+  '/images/delete_icon.svg'  
 ];
 
 self.addEventListener('install', function(e) {
