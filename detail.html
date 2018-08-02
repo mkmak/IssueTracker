@@ -71,25 +71,27 @@
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
 
+          if(issue_id[0] == '-'){
           ref.child(issue_id).once('value').then(function(snapshot){
             document.getElementById('issuename').innerHTML = snapshot.val().title;
             document.getElementById('issuetype').innerHTML = snapshot.val().type;
             document.getElementById('issuedesc').innerText = snapshot.val().description;
           });
-
+          }
+          else{
           db.collection('users').doc(user.uid).collection('issues').doc(issue_id).get().then(function(doc){
             document.getElementById('issuename').innerHTML = doc.data().title;
             document.getElementById('issuetype').innerHTML = doc.data().type;
             document.getElementById('issuedesc').innerText = doc.data().description;
           });
-
-          var storageRef = firebase.storage().ref().child(user.uid).child(issue_id);
-          storageRef.child(issue_id +'.png').getDownloadURL().then(function(url){
-            document.getElementById('issue_img').src = url;
-          });
         }
-        else{
-          
+          var storageRef = firebase.storage().ref().child(user.uid).child(issue_id);
+
+            storageRef.child(issue_id +'.png').getDownloadURL().then(function(url) {
+              document.getElementById('issue_img').src = url;
+            }).catch(function(error) {
+              console.log('no file found');
+            });
         }
       });
     }
