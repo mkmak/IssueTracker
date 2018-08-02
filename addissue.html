@@ -105,7 +105,10 @@
       firebase.auth().signOut();
     }
 
-    firebase.firestore().enablePersistence()
+    var db = firebase.firestore();
+    const settings = {timestampsInSnapshots: true};
+    db.settings(settings);
+    db.enablePersistence()
     .then(function() {
       var db = firebase.firestore();
     })
@@ -116,8 +119,6 @@
         alert('Your browser does not support offline features.')
       }
     });
-    const settings = {timestampsInSnapshots: true};
-    db.settings(settings);
     
 
     var issue_ref;

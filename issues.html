@@ -180,7 +180,10 @@
     document.getElementById('signoutbtn').addEventListener('click', logout);
 
     // firebase
-    firebase.firestore().enablePersistence()
+    var db = firebase.firestore();
+    const settings = {timestampsInSnapshots: true};
+    db.settings(settings);
+    db.enablePersistence()
     .then(function() {
       var db = firebase.firestore();
     })
@@ -191,8 +194,6 @@
         alert('Your browser does not support offline features.')
       }
     });
-    const settings = {timestampsInSnapshots: true};
-    db.settings(settings);
 
     var ref = firebase.database().ref('issues');
     var state = "firestore";
@@ -271,7 +272,7 @@
     });
 
     function populate(data) {
-      console.log(data);
+      // console.log(data);
       
       ref.once('value', function(snapshot){
         snapshot.forEach(function(childSnapshot){
