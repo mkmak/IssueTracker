@@ -53,7 +53,7 @@
       <div id="issuetype">Loading..</div>
       <h3>Issue Description:</h3>
       <div id="issuedesc">Loading..</div>
-      <img id="issue_img">
+      <img id="issue_img" alt="issue-img" src="">
       <p></p>
       <button type="button" id="edit-button">Edit Issue</button>
     </div>
@@ -125,6 +125,7 @@
             storageRef.child(issue_id +'.png').getDownloadURL().then(function(url) {
               document.getElementById('issue_img').src = url;
             }).catch(function(error) {
+              document.getElementById('issue_img').display = 'none';
               console.log('no file found');
             });
         }

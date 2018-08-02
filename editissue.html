@@ -43,51 +43,49 @@
 
   <hr>
 
-  <section>
-    <div class="container">
-      <form>
-        <div class="row">
+  <div class="container">
+    <form>
+      <div class="row">
+        <div class="col1">
+          <label>Issue Title</label>
+        </div>
+        <div class="col2">
+          <input name="title" type="text" id="issuename" placeholder="Loading..">
+        </div>
+      </div>
+      <br>
+      <div class="row">
           <div class="col1">
-            <label>Issue Title</label>
+            <label>Issue Type</label>
           </div>
           <div class="col2">
-            <input name="title" type="text" id="issuename" placeholder="Loading..">
+            <input name="type" type="text" id="issuetype" placeholder="Loading..">
           </div>
         </div>
-        <br>
-        <div class="row">
-            <div class="col1">
-              <label>Issue Type</label>
-            </div>
-            <div class="col2">
-              <input name="type" type="text" id="issuetype" placeholder="Loading..">
-            </div>
-          </div>
-        <br>
-        <div class="row">
-          <div class="col1">
-            <label>Issue Description</label>
-          </div>
-          <div class="col2">
-            <textarea name="desc" rows="8" cols="50" id="issuedesc" placeholder="Loading.."></textarea>
-          </div>
+      <br>
+      <div class="row">
+        <div class="col1">
+          <label>Issue Description</label>
         </div>
-        <br>
-        <div class="row">
-          <div class="col1">
-            <label>Issue Attachment: </label>
-          </div>
-          <div class="col2">
-            <input id="file" type="file">
-          </div>
+        <div class="col2">
+          <textarea name="desc" rows="8" cols="50" id="issuedesc" placeholder="Loading.."></textarea>
         </div>
-        <br>
-        <!-- <input type="submit">
-        <input type="reset"> -->
-      </form>
-      <button type="button" id="submit-button">Submit</button>
-    </div>
-  </section>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col1">
+          <label>Issue Attachment: </label>
+        </div>
+        <div class="col2">
+          <input id="file" type="file">
+        </div>
+      </div>
+      <br>
+      <!-- <input type="submit">
+      <input type="reset"> -->
+    </form>
+    <button type="button" id="submit-button">Submit</button>
+  </div>
 
   <script>
     (function() {

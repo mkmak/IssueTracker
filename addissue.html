@@ -43,50 +43,48 @@
 
   <hr>
 
-  <section>
-    <div class="container">
-      <form>
-        <div class="row">
-          <div class="col1">
-            <label>Issue Title</label>
-          </div>
-          <div class="col2">
-            <input name="title" type="text" id="issuetitle" placeholder="Enter Issue Title" value="">
-          </div>
+  <div class="container">
+    <form>
+      <div class="row">
+        <div class="col1">
+          <label>Issue Title</label>
         </div>
-        <br>
-        <div class="row">
-          <div class="col1">
-            <label>Issue Type</label>
-          </div>
-          <div class="col2">
-            <input name="type" type="text" id="issuetype" placeholder="Enter Issue Type" value="">
-          </div>
+        <div class="col2">
+          <input name="title" type="text" id="issuetitle" placeholder="Enter Issue Title" value="">
         </div>
-        <br>
-        <div class="row">
-          <div class="col1">
-            <label>Issue Description</label>
-          </div>
-          <div class="col2">
-            <textarea name="desc" id="issuedesc" rows="8" cols="50"></textarea>
-          </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col1">
+          <label>Issue Type</label>
         </div>
-        <br>
-        <div class="row">
-          <div class="col1">
-            <label>Issue Attachment: </label>
-          </div>
-          <div class="col2">
-            <input id="file" type="file">
-          </div>
+        <div class="col2">
+          <input name="type" type="text" id="issuetype" placeholder="Enter Issue Type" value="">
         </div>
-        <br>
-        <button type="button" id="submit-firebase">Submit</button>
-        <button type="button" id="submit-REST">Submit via REST</button>
-      </form>
-    </div>
-  </section>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col1">
+          <label>Issue Description</label>
+        </div>
+        <div class="col2">
+          <textarea name="desc" id="issuedesc" rows="8" cols="50"></textarea>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col1">
+          <label>Issue Attachment: </label>
+        </div>
+        <div class="col2">
+          <input id="file" type="file">
+        </div>
+      </div>
+      <br>
+      <button type="button" id="submit-firebase">Submit</button>
+      <button type="button" id="submit-REST">Submit via REST</button>
+    </form>
+  </div>
   
   <script>
     (function() {
