@@ -87,12 +87,16 @@
     var db = firebase.firestore();
     const settings = {timestampsInSnapshots: true};
     db.settings(settings);
-      
+    
+
+    var issue_ref;
+    var issue_id;
 
     // Firebase Firestore API
     var submit_fb_button = document.getElementById("submit-firebase");
     submit_fb_button.addEventListener("click", function() {
-      var issue_ref = db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc();
+      issue_ref = db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc();
+      issue_id = issue_ref.id;
       issue_ref.set({
         title: document.getElementById('issuetitle').value,
         type: document.getElementById('issuetype').value,
@@ -126,9 +130,23 @@
         var xhttp = new XMLHttpRequest();
         xhttp.open("POST", "https://b-hw2-38225.firebaseio.com/issues.json?auth=" + idToken, true);
         xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.onload = function(){
+          issue_id = JSON.parse(xhttp.responseText).name;
+          if(document.getElementById('file').files.length > 0) {
+            console.log(issue_id);
+            var storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid).child(issue_id);
+            var file = document.getElementById('file').files[0];
+            storageRef.child(issue_id+'.png').put(file).then(function(){
+              console.log('stored file');
+              location.href = 'issue.html';
+            });
+          }
+          else{
+            location.href = "issues.html";
+          }
+        };
         xhttp.send(JSON.stringify(data));
       })
-      .then(function() {location.href = 'issues.html';});
     });
     </script>
 

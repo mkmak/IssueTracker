@@ -103,7 +103,7 @@
     </table>
     <br>
     <button id="addbtn" type="button" onclick="window.location.href='addissue.html'">Add Issue</button><br>
-    <button id="loadbutton" type="button">Switch to Realtime Database</button><br>
+    <button id="loadbutton" type="button">Switch to REST</button><br>
     <noscript>
       <br><a href="addissue.html">Link to Add Issue</a>
     </noscript>
@@ -117,20 +117,30 @@
         db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(change_id).set({
           open: false
         }, {merge: true});
+        ref.child(change_id).update({open: false});
       }
       else {
         btn.innerHTML = "Open";
         db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(change_id).set({
           open: true
         }, {merge: true});
+        ref.child(change_id).update({open: true});
       }
     }
     function remove(link) {
       var change_id = link.parentElement.parentElement.getAttribute('data-id');
 
-      ref.child(change_id).remove().then(function(){
-        console.log('issue deleted from realtime database');
-      });
+      firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if(xhttp.readyState === 4 && xhttp.status === 200) {
+              console.log('deleted from rest');
+            }
+          };
+          xhttp.open("DELETE", 'https://b-hw2-38225.firebaseio.com/issues/'+change_id+'.json?auth='+idToken, true);
+          xhttp.setRequestHeader("Content-type", "application/json");
+          xhttp.send();
+        });
 
       db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(change_id).delete()
       .then(function() {
@@ -221,7 +231,7 @@
           };
           xhttp.open("GET", "https://b-hw2-38225.firebaseio.com/issues.json?auth=" + idToken, true);
           xhttp.setRequestHeader("Content-type", "application/json");
-          xhttp.send('');
+          xhttp.send();
         });
       }else{
         location.href = 'issues.html';
