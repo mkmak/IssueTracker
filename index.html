@@ -30,16 +30,11 @@
     </div>
   </header>
 
-
-  <h1>Index for CSE134B HW2</h1>
-  <ul>
-    <li><a href="login.html">A login form</a></li>
-    <li><a href="signup.html">A sign-up form</a></li>
-    <li><a href="addissue.html">An add issue form</a></li>
-    <li><a href="editissue.html">A edit issue form</a></li>
-    <li><a href="issues.html">An issues list page (table) that links to issues</a></li>
-    <li><a href="issues.html">Issue details page for each issue in the table</a> (Access from the issues page)</li>
-  </ul>
+  <section id="showcase">
+    <div id="container">
+      <img src="images/showcase.jpg" alt="showcase">
+    </div>
+  </section>
 
   <script>
     document.getElementById('signoutbtn').addEventListener('click', logout);
@@ -63,9 +58,13 @@
         if(user){
           document.getElementById('home_issue').style.display = "inline";
           document.getElementById('home_logout').style.display = "inline";
+          document.getElementById('home_login').style.display = "none";
+          document.getElementById('home_signup').style.display = "none";
         }else{
           document.getElementById('home_login').style.display = "inline";
           document.getElementById('home_signup').style.display = "inline";
+          document.getElementById('home_issue').style.display = "none";
+          document.getElementById('home_logout').style.display = "none";
         }
       });
     }

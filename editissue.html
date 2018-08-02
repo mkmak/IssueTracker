@@ -75,7 +75,6 @@
         <input type="reset"> -->
       </form>
       <button type="button" id="submit-button">Submit</button>
-      <button type="button" id="submit-rest-button">Submit via REST</button>
     </div>
   </section>
 
@@ -122,11 +121,39 @@
     }
 
     document.getElementById('submit-button').addEventListener('click', function() {
-      db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(issue_id).set({
+
+      let issue_obj = {
         title: document.getElementById('issuename').value,
         type: document.getElementById('issuetype').value,
         description: document.getElementById('issuedesc').value
-      }, {merge: true})
+      };
+      
+      if(issue_id[0] === '-'){
+        firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
+      var issue_json = JSON.stringify(issue_obj);
+      var xhr = new XMLHttpRequest();
+      xhr.open('PATCH', 'https://b-hw2-38225.firebaseio.com/issues/'+issue_id+'.json?auth='+idToken, true);
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.onload = function() {
+        console.log('edit');
+
+        if(document.getElementById('file').files.length > 0) {
+          var storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid).child(issue_id);
+          var file = document.getElementById('file').files[0];
+          storageRef.child(issue_id+'.png').put(file).then(function(){
+            location.href = "issues.html";
+          });
+        }
+        else{
+          location.href = "issues.html";
+        }
+
+      };
+      xhr.send(issue_json);
+    });
+      }else{
+      db.collection('users').doc(firebase.auth().currentUser.uid).collection('issues').doc(issue_id).set(
+        issue_obj, {merge: true})
       .then(function() {
         if(document.getElementById('file').files.length > 0) {
           var storageRef = firebase.storage().ref().child(firebase.auth().currentUser.uid).child(issue_id);
@@ -139,10 +166,7 @@
           location.href = "issues.html";
         }
       });
-    });
-
-    document.getElementById('submit-rest-button').addEventListener('click', function() {
-      
+      }
     });
   </script>
 
