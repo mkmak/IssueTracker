@@ -75,6 +75,7 @@
         <input type="reset"> -->
       </form>
       <button type="button" id="submit-button">Submit</button>
+      <button type="button" id="submit-rest-button">Submit via REST</button>
     </div>
   </section>
 
@@ -89,6 +90,7 @@
     const settings = {timestampsInSnapshots: true};
     db.settings(settings);
 
+    var ref = firebase.database().ref('issues');
 
     var url = window.location.href;
     var pos = url.lastIndexOf('id=');
@@ -101,13 +103,20 @@
       console.log('initializing...');
       firebase.auth().onAuthStateChanged(function(user) {
         if(user){
-          db.collection('users').doc(user.uid).collection('issues').doc(issue_id).get().then(function(doc){
-            console.log(doc.data());
-            document.getElementById('issuename').value = doc.data().title;
-            document.getElementById('issuetype').value = doc.data().type;
-            document.getElementById('issuedesc').value = doc.data().description;
-
-          });
+          if (issue_id[0] === '-') {
+            ref.child(issue_id).once('value').then(function(snapshot){
+              document.getElementById('issuename').value = snapshot.val().title;
+              document.getElementById('issuetype').value = snapshot.val().type;
+              document.getElementById('issuedesc').innerText = snapshot.val().description;
+            });
+          } else {
+            db.collection('users').doc(user.uid).collection('issues').doc(issue_id).get().then(function(doc){
+              console.log(doc.data());
+              document.getElementById('issuename').value = doc.data().title;
+              document.getElementById('issuetype').value = doc.data().type;
+              document.getElementById('issuedesc').value = doc.data().description;
+            });
+          }
         }
       });
     }
@@ -130,6 +139,10 @@
           location.href = "issues.html";
         }
       });
+    });
+
+    document.getElementById('submit-rest-button').addEventListener('click', function() {
+      
     });
   </script>
 
