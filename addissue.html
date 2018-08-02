@@ -138,7 +138,7 @@
             var file = document.getElementById('file').files[0];
             storageRef.child(issue_id+'.png').put(file).then(function(){
               console.log('stored file');
-              location.href = 'issue.html';
+              location.href = 'issues.html';
             });
           }
           else{
